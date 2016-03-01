@@ -72,7 +72,6 @@ void MX_RTC_Init(void)
   sDate.Year = 0;
 
   HAL_RTC_SetDate(&hrtc, &sDate, FORMAT_BIN);
-
 }
 
 void HAL_RTC_MspInit(RTC_HandleTypeDef* hrtc)

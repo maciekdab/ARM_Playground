@@ -40,8 +40,12 @@
 
 #define MENU_KEY_Pin GPIO_PIN_0
 #define MENU_KEY_GPIO_Port GPIOA
+#define DISP_CLK_Pin GPIO_PIN_5
+#define DISP_CLK_GPIO_Port GPIOA
 #define DISPLAY_LATCH_Pin GPIO_PIN_6
 #define DISPLAY_LATCH_GPIO_Port GPIOA
+#define DISP_DIO_Pin GPIO_PIN_7
+#define DISP_DIO_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
