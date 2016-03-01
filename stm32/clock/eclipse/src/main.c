@@ -38,10 +38,11 @@
 
 #define FALSE 	0
 #define TRUE 	1
-typedef uint8_t bool;
 
 #define LOW		0
 #define HIGH	1
+
+typedef uint8_t bool;
 
 /** System Clock Configuration
  */
@@ -88,12 +89,12 @@ static volatile bool secondsTick = FALSE;
 
 // -------------------------- Display vars -------------------------------------
 static const uint32_t DIGITS_SETUP_MODE_BLINK_INTERVAL_MS = 300;
-#define MINUTES_UNITS_ANODE     0
-#define MINUTES_DECIMALS_ANODE  1
-#define HOURS_UNITS_ANODE       2
-#define HOURS_DECIMALS_ANODE    3
-#define DISPLAY_DOT_INDEX       10
-#define DISPLAY_BLANK_INDEX     11
+static const uint8_t MINUTES_UNITS_ANODE = 0;
+static const uint8_t MINUTES_DECIMALS_ANODE = 1;
+static const uint8_t HOURS_UNITS_ANODE = 2;
+static const uint8_t HOURS_DECIMALS_ANODE = 3;
+static const uint8_t DISPLAY_DOT_INDEX = 10;
+static const uint8_t DISPLAY_BLANK_INDEX = 11;
 
 static const uint8_t ANODE_DATA[] = {
 		0b00000001,
@@ -159,12 +160,12 @@ static uint8_t nextState = DISPLAY_STATE;
 // -----------------------------------------------------------------------------
 
 // -------------------------- Time handling ------------------------------------
-#define MINUTES_MAX_ALLOWED_VALUE	59
-#define HOURS_MAX_ALLOWED_VALUE		23
+static const uint8_t MINUTES_MAX_ALLOWED_VALUE = 59;
+static const uint8_t HOURS_MAX_ALLOWED_VALUE = 23;
 RTC_TimeTypeDef currentTime;
 RTC_DateTypeDef currentDate;
 
-void getCurrentDateTime(RTC_DateTypeDef* date, RTC_TimeTypeDef* time) {
+static void getCurrentDateTime(RTC_DateTypeDef* date, RTC_TimeTypeDef* time) {
 	HAL_RTC_GetTime(&hrtc, time, RTC_FORMAT_BIN);
 	HAL_RTC_GetDate(&hrtc, date, RTC_FORMAT_BIN); // need to get date also to unlock time
 }
