@@ -64,12 +64,6 @@ void MX_GPIO_Init(void)
   __GPIOA_CLK_ENABLE();
   __GPIOB_CLK_ENABLE();
 
-  /*Configure GPIO pins : PF0 PF1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
-  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
-
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = MENU_KEY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
