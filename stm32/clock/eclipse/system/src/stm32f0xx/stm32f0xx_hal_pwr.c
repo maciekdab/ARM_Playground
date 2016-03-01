@@ -374,7 +374,7 @@ void HAL_PWR_EnterSTOPMode(uint32_t Regulator, uint8_t STOPEntry)
   *            Alarm out, or RTC clock calibration out.
   *          - WKUP pins if enabled.
   *            STM32F0x8 devices, the Stop mode is available, but it is 
-  *            aningless to distinguish between voltage regulator in Low power 
+  *            meaningless to distinguish between voltage regulator in Low power
   *            mode and voltage regulator in Run mode because the regulator 
   *            not used and the core is supplied directly from an external source.
   *            Consequently, the Standby mode is not available on those devices.
