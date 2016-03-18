@@ -42,9 +42,7 @@
 #include "pff.h"
 #include "string.h"
 
-#define CS43L22_CORE_ADDR	0x33
 #define CS43L22_CODEC_ADDR	(0x4A << 1)
-
 #define CS43L22_PWR_REG	0x02
 
 FATFS fs; // fs object
