@@ -19,7 +19,7 @@ static void xmit(char d) {}  	// Dummy write console
 #define F_CPU				48000000
 #define CPU_NS_TICK			(1000 / (F_CPU / 1000000UL))	// CPU nanosecond tick
 #define CPU_TICKS_NS(ns)	(ns / CPU_NS_TICK)				// CPU ticks for ns nanoseconds
-#define CPU_TICKS_US(us)	CPU_TICKS_NS(us * 1000) / 1000	// CPU ticks for us microseconds
+#define CPU_TICKS_US(us)	CPU_TICKS_NS(us * 1000)			// CPU ticks for us microseconds
 #define CPU_TICKS_100US		CPU_TICKS_US(100)				// CPU required ticks for 100 microseconds
 
 void xmit (char);			/* Send a byte via software UART */

@@ -246,29 +246,33 @@ void stop_playing_wav_file(void) {
 
 // dma dac conversion complete callback
 void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef* hdac) {
-	UINT nr;
-	pf_read((dac_buffer + DAC_BUFFER_HALF_SIZE), DAC_BUFFER_HALF_SIZE, &nr);
+	if(hdac->Instance == DAC1) {
+		UINT nr;
+		pf_read((dac_buffer + DAC_BUFFER_HALF_SIZE), DAC_BUFFER_HALF_SIZE, &nr);
 
-	// EOF reached
-	if(nr == 0) {
+		// EOF reached
+		if(nr == 0) {
 #ifdef DEBUG
-		print_info("EOF reached ...\r\n");
+			print_info("EOF reached ...\r\n");
 #endif
-		stop_playing_wav_file();
+			stop_playing_wav_file();
+		}
 	}
 }
 
 // dma dac conversion half complete callback
 void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef* hdac) {
-	UINT nr;
-	pf_read(dac_buffer, DAC_BUFFER_HALF_SIZE, &nr);
+	if(hdac->Instance == DAC1) {
+		UINT nr;
+		pf_read(dac_buffer, DAC_BUFFER_HALF_SIZE, &nr);
 
-	// EOF reached
-	if(nr == 0) {
+		// EOF reached
+		if(nr == 0) {
 #ifdef DEBUG
-		print_info("EOF reached ...\r\n");
+			print_info("EOF reached ...\r\n");
 #endif
-		stop_playing_wav_file();
+			stop_playing_wav_file();
+		}
 	}
 }
 
