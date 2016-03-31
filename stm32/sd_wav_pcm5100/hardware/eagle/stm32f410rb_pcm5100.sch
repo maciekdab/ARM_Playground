@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -3661,19 +3661,6 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <sheets>
 <sheet>
 <plain>
-<rectangle x1="154.432" y1="37.846" x2="155.702" y2="38.1" layer="94"/>
-<rectangle x1="154.432" y1="37.338" x2="155.702" y2="37.592" layer="94"/>
-<rectangle x1="154.432" y1="36.83" x2="155.702" y2="37.084" layer="94"/>
-<rectangle x1="156.972" y1="37.846" x2="158.242" y2="38.1" layer="94"/>
-<rectangle x1="156.972" y1="37.338" x2="158.242" y2="37.592" layer="94"/>
-<rectangle x1="156.972" y1="36.83" x2="158.242" y2="37.084" layer="94"/>
-<rectangle x1="155.448" y1="37.338" x2="156.718" y2="37.592" layer="94" rot="R90"/>
-<rectangle x1="155.956" y1="37.338" x2="157.226" y2="37.592" layer="94" rot="R90"/>
-<rectangle x1="153.924" y1="38.354" x2="158.75" y2="38.608" layer="94"/>
-<rectangle x1="153.924" y1="35.052" x2="158.75" y2="35.306" layer="94"/>
-<text x="155.448" y="35.56" size="1.016" layer="94" ratio="20">TT</text>
-<rectangle x1="158.496" y1="35.306" x2="158.75" y2="38.354" layer="94"/>
-<rectangle x1="153.924" y1="35.306" x2="154.178" y2="38.354" layer="94"/>
 <rectangle x1="176.784" y1="16.51" x2="182.118" y2="17.018" layer="94"/>
 <rectangle x1="176.784" y1="14.986" x2="182.118" y2="15.494" layer="94"/>
 <rectangle x1="176.784" y1="13.462" x2="182.118" y2="13.97" layer="94"/>
