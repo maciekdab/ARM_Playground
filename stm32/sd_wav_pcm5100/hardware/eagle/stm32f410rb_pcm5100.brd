@@ -225,61 +225,6 @@ We've spent an enormous amount of time creating and checking these footprints an
 </package>
 </packages>
 </library>
-<library name="robertsonics">
-<packages>
-<package name="PW_R-PDSO-G20">
-<description>&lt;b&gt;PLASTIC SMALL-OUTLINE PACKAGE SO 20&lt;/b&gt; JEDEC MO-153, PW Type&lt;p&gt;
-Source: www.ti.com/.. slvs087l.pdf</description>
-<wire x1="-3.2" y1="2.15" x2="3.2" y2="2.15" width="0.2032" layer="21"/>
-<wire x1="3.2" y1="2.15" x2="3.2" y2="-2.15" width="0.2032" layer="21"/>
-<wire x1="3.2" y1="-2.15" x2="-3.2" y2="-2.15" width="0.2032" layer="21"/>
-<wire x1="-3.2" y1="-2.15" x2="-3.2" y2="2.15" width="0.2032" layer="21"/>
-<circle x="-2.525" y="-1.3" radius="0.325" width="0.2032" layer="21"/>
-<smd name="1" x="-2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="2" x="-2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="3" x="-1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="4" x="-0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="5" x="-0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="6" x="0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="7" x="0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="8" x="1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="9" x="2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="10" x="2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="11" x="2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="12" x="2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="13" x="1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="14" x="0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="15" x="0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="16" x="-0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="17" x="-0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="18" x="-1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="19" x="-2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="20" x="-2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-3.075" y1="-3.3" x2="-2.775" y2="-2.23" layer="51"/>
-<rectangle x1="-2.425" y1="-3.3" x2="-2.125" y2="-2.23" layer="51"/>
-<rectangle x1="-1.775" y1="-3.3" x2="-1.475" y2="-2.23" layer="51"/>
-<rectangle x1="-1.125" y1="-3.3" x2="-0.825" y2="-2.23" layer="51"/>
-<rectangle x1="-0.475" y1="-3.3" x2="-0.175" y2="-2.23" layer="51"/>
-<rectangle x1="0.175" y1="-3.3" x2="0.475" y2="-2.23" layer="51"/>
-<rectangle x1="0.825" y1="-3.3" x2="1.125" y2="-2.23" layer="51"/>
-<rectangle x1="1.475" y1="-3.3" x2="1.775" y2="-2.23" layer="51"/>
-<rectangle x1="2.125" y1="-3.3" x2="2.425" y2="-2.23" layer="51"/>
-<rectangle x1="2.775" y1="-3.3" x2="3.075" y2="-2.23" layer="51"/>
-<rectangle x1="2.775" y1="2.23" x2="3.075" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="2.125" y1="2.23" x2="2.425" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="1.475" y1="2.23" x2="1.775" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="0.825" y1="2.23" x2="1.125" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="0.175" y1="2.23" x2="0.475" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-0.475" y1="2.23" x2="-0.175" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-1.125" y1="2.23" x2="-0.825" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-1.775" y1="2.23" x2="-1.475" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-2.425" y1="2.23" x2="-2.125" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-3.075" y1="2.23" x2="-2.775" y2="3.3" layer="51" rot="R180"/>
-</package>
-</packages>
-</library>
 <library name="pinhead">
 <description>&lt;b&gt;Pin Header Connectors&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
@@ -364,20 +309,18 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <smd name="CD_SW2" x="-5.53" y="3.82" dx="1.55" dy="1" layer="1" rot="R180"/>
 <smd name="NC3" x="-5.86" y="2.29" dx="1.4" dy="0.8" layer="1" rot="R90"/>
 <text x="-3.81" y="-8.89" size="1.27" layer="21">MICROSD</text>
-<wire x1="-5.334" y1="-5.9436" x2="-5.334" y2="-9.652" width="0.127" layer="21"/>
+<wire x1="-5.334" y1="-6.3246" x2="-5.334" y2="-9.652" width="0.127" layer="21"/>
 <wire x1="-5.334" y1="-9.652" x2="-5.08" y2="-9.906" width="0.127" layer="21"/>
 <wire x1="-5.08" y1="-9.906" x2="5.588" y2="-9.906" width="0.127" layer="21"/>
 <wire x1="5.588" y1="-9.906" x2="5.842" y2="-9.652" width="0.127" layer="21"/>
-<wire x1="5.842" y1="-9.652" x2="5.842" y2="-5.9436" width="0.127" layer="21"/>
+<wire x1="5.842" y1="-9.652" x2="5.842" y2="-6.3246" width="0.127" layer="21"/>
 <text x="-2.54" y="1.27" size="1.27" layer="25">&gt;NAME</text>
-<wire x1="-5.8166" y1="5.6134" x2="6.1214" y2="5.6134" width="0.127" layer="21"/>
-<wire x1="6.1214" y1="5.6134" x2="6.1214" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="6.1214" y1="-5.9436" x2="5.842" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="5.842" y1="-5.9436" x2="-5.334" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="-5.334" y1="-5.9436" x2="-5.8166" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="-5.8166" y1="-5.9182" x2="-5.842" y2="-5.9182" width="0.127" layer="21"/>
-<wire x1="-5.842" y1="-5.9182" x2="-5.842" y2="5.6134" width="0.127" layer="21"/>
+<wire x1="-5.8166" y1="5.6134" x2="4.953" y2="5.6134" width="0.127" layer="21"/>
+<wire x1="-5.842" y1="-4.445" x2="-5.842" y2="1.397" width="0.127" layer="21"/>
 <text x="-2.54" y="-1.27" size="1.27" layer="25">&gt;VALUE</text>
+<wire x1="-5.8166" y1="4.5212" x2="-5.8166" y2="5.6134" width="0.127" layer="21"/>
+<wire x1="6.1214" y1="-4.4196" x2="6.1214" y2="2.0066" width="0.127" layer="21"/>
+<wire x1="6.1214" y1="3.8354" x2="6.1214" y2="4.4196" width="0.127" layer="21"/>
 </package>
 </packages>
 </library>
@@ -618,6 +561,63 @@ Industrial temp</description>
 </package>
 </packages>
 </library>
+<library name="stm32f410rb_pcm5100">
+<description>Generated from &lt;b&gt;stm32f410rb_pcm5100.sch&lt;/b&gt;&lt;p&gt;
+by exp-lbrs.ulp</description>
+<packages>
+<package name="ROBERTSONICS_PW_R-PDSO-G20">
+<description>&lt;b&gt;PLASTIC SMALL-OUTLINE PACKAGE SO 20&lt;/b&gt; JEDEC MO-153, PW Type&lt;p&gt;
+Source: www.ti.com/.. slvs087l.pdf</description>
+<circle x="-2.525" y="-1.3" radius="0.325" width="0.2032" layer="21"/>
+<wire x1="-3.2" y1="1.896" x2="3.2" y2="1.896" width="0.2032" layer="21"/>
+<wire x1="3.2" y1="1.896" x2="3.2" y2="-1.896" width="0.2032" layer="21"/>
+<wire x1="3.2" y1="-1.896" x2="-3.2" y2="-1.896" width="0.2032" layer="21"/>
+<wire x1="-3.2" y1="-1.896" x2="-3.2" y2="1.896" width="0.2032" layer="21"/>
+<rectangle x1="-3.075" y1="-3.046" x2="-2.775" y2="-1.976" layer="51"/>
+<rectangle x1="-2.425" y1="-3.046" x2="-2.125" y2="-1.976" layer="51"/>
+<rectangle x1="-1.775" y1="-3.046" x2="-1.475" y2="-1.976" layer="51"/>
+<rectangle x1="-1.125" y1="-3.046" x2="-0.825" y2="-1.976" layer="51"/>
+<rectangle x1="-0.475" y1="-3.046" x2="-0.175" y2="-1.976" layer="51"/>
+<rectangle x1="0.175" y1="-3.046" x2="0.475" y2="-1.976" layer="51"/>
+<rectangle x1="0.825" y1="-3.046" x2="1.125" y2="-1.976" layer="51"/>
+<rectangle x1="1.475" y1="-3.046" x2="1.775" y2="-1.976" layer="51"/>
+<rectangle x1="2.125" y1="-3.046" x2="2.425" y2="-1.976" layer="51"/>
+<rectangle x1="2.775" y1="-3.046" x2="3.075" y2="-1.976" layer="51"/>
+<rectangle x1="2.775" y1="1.976" x2="3.075" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="2.125" y1="1.976" x2="2.425" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="1.475" y1="1.976" x2="1.775" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="0.825" y1="1.976" x2="1.125" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="0.175" y1="1.976" x2="0.475" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-0.475" y1="1.976" x2="-0.175" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-1.125" y1="1.976" x2="-0.825" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-1.775" y1="1.976" x2="-1.475" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-2.425" y1="1.976" x2="-2.125" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-3.075" y1="1.976" x2="-2.775" y2="3.046" layer="51" rot="R180"/>
+<smd name="1" x="-2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="2" x="-2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="3" x="-1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="4" x="-0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="5" x="-0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="6" x="0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="7" x="0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="8" x="1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="9" x="2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="10" x="2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="11" x="2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="12" x="2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="13" x="1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="14" x="0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="15" x="0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="16" x="-0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="17" x="-0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="18" x="-1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="19" x="-2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="20" x="-2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
+</packages>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -841,7 +841,7 @@ Industrial temp</description>
 <attribute name="NAME" x="36.2204" y="44.7675" size="0.6096" layer="26" font="vector" rot="MR0"/>
 <attribute name="VALUE" x="36.4617" y="43.7261" size="0.6096" layer="28" font="vector" rot="MR0"/>
 </element>
-<element name="U5" library="robertsonics" package="PW_R-PDSO-G20" value="PCM5100" x="35.687" y="34.036" smashed="yes" rot="MR180">
+<element name="U5" library="stm32f410rb_pcm5100" package="ROBERTSONICS_PW_R-PDSO-G20" value="ROBERTSONICS_PCM5100" x="35.687" y="34.036" smashed="yes" rot="MR180">
 <attribute name="NAME" x="37.2745" y="33.0835" size="0.6096" layer="26" rot="MR180"/>
 <attribute name="VALUE" x="34.0995" y="34.671" size="0.6096" layer="28" rot="MR180"/>
 </element>
@@ -1356,12 +1356,11 @@ Industrial temp</description>
 <wire x1="37.084" y1="5.588" x2="37.084" y2="14.971059375" width="0.3048" layer="16"/>
 <wire x1="37.084" y1="14.971059375" x2="38.114940625" y2="16.002" width="0.3048" layer="16"/>
 <wire x1="19.558" y1="2.794" x2="18.542" y2="3.556" width="0.3048" layer="16"/>
-<wire x1="18.542" y1="3.556" x2="18.542" y2="11.176" width="0.3048" layer="16"/>
-<wire x1="18.542" y1="11.176" x2="17.014" y2="12.958" width="0.3048" layer="16"/>
 <wire x1="17.014" y1="25.954" x2="17.014" y2="24.9642" width="0.3048" layer="16"/>
-<wire x1="16.891" y1="13.1064" x2="17.014" y2="12.958" width="0.3048" layer="16"/>
-<wire x1="16.891" y1="24.1808" x2="16.891" y2="13.1064" width="0.3048" layer="16"/>
+<wire x1="16.891" y1="24.1808" x2="16.891" y2="21.6916" width="0.3048" layer="16"/>
 <wire x1="17.014" y1="24.9642" x2="16.891" y2="24.1808" width="0.3048" layer="16"/>
+<wire x1="18.542" y1="3.556" x2="18.542" y2="20.0406" width="0.3048" layer="16"/>
+<wire x1="18.542" y1="20.0406" x2="16.891" y2="21.6916" width="0.3048" layer="16"/>
 </signal>
 <signal name="N$10">
 <contactref element="BOOT0_0" pad="2"/>

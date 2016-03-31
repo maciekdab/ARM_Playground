@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.01" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -198,128 +198,6 @@
 </gates>
 <devices>
 <device name="">
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
-<library name="robertsonics">
-<packages>
-<package name="PW_R-PDSO-G20">
-<description>&lt;b&gt;PLASTIC SMALL-OUTLINE PACKAGE SO 20&lt;/b&gt; JEDEC MO-153, PW Type&lt;p&gt;
-Source: www.ti.com/.. slvs087l.pdf</description>
-<wire x1="-3.2" y1="2.15" x2="3.2" y2="2.15" width="0.2032" layer="21"/>
-<wire x1="3.2" y1="2.15" x2="3.2" y2="-2.15" width="0.2032" layer="21"/>
-<wire x1="3.2" y1="-2.15" x2="-3.2" y2="-2.15" width="0.2032" layer="21"/>
-<wire x1="-3.2" y1="-2.15" x2="-3.2" y2="2.15" width="0.2032" layer="21"/>
-<circle x="-2.525" y="-1.3" radius="0.325" width="0.2032" layer="21"/>
-<smd name="1" x="-2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="2" x="-2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="3" x="-1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="4" x="-0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="5" x="-0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="6" x="0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="7" x="0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="8" x="1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="9" x="2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="10" x="2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
-<smd name="11" x="2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="12" x="2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="13" x="1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="14" x="0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="15" x="0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="16" x="-0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="17" x="-0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="18" x="-1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="19" x="-2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<smd name="20" x="-2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
-<text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
-<text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
-<rectangle x1="-3.075" y1="-3.3" x2="-2.775" y2="-2.23" layer="51"/>
-<rectangle x1="-2.425" y1="-3.3" x2="-2.125" y2="-2.23" layer="51"/>
-<rectangle x1="-1.775" y1="-3.3" x2="-1.475" y2="-2.23" layer="51"/>
-<rectangle x1="-1.125" y1="-3.3" x2="-0.825" y2="-2.23" layer="51"/>
-<rectangle x1="-0.475" y1="-3.3" x2="-0.175" y2="-2.23" layer="51"/>
-<rectangle x1="0.175" y1="-3.3" x2="0.475" y2="-2.23" layer="51"/>
-<rectangle x1="0.825" y1="-3.3" x2="1.125" y2="-2.23" layer="51"/>
-<rectangle x1="1.475" y1="-3.3" x2="1.775" y2="-2.23" layer="51"/>
-<rectangle x1="2.125" y1="-3.3" x2="2.425" y2="-2.23" layer="51"/>
-<rectangle x1="2.775" y1="-3.3" x2="3.075" y2="-2.23" layer="51"/>
-<rectangle x1="2.775" y1="2.23" x2="3.075" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="2.125" y1="2.23" x2="2.425" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="1.475" y1="2.23" x2="1.775" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="0.825" y1="2.23" x2="1.125" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="0.175" y1="2.23" x2="0.475" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-0.475" y1="2.23" x2="-0.175" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-1.125" y1="2.23" x2="-0.825" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-1.775" y1="2.23" x2="-1.475" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-2.425" y1="2.23" x2="-2.125" y2="3.3" layer="51" rot="R180"/>
-<rectangle x1="-3.075" y1="2.23" x2="-2.775" y2="3.3" layer="51" rot="R180"/>
-</package>
-</packages>
-<symbols>
-<symbol name="PCM5100">
-<wire x1="-10.16" y1="10.16" x2="-10.16" y2="-17.78" width="0.254" layer="94"/>
-<wire x1="-10.16" y1="-17.78" x2="10.16" y2="-17.78" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-17.78" x2="10.16" y2="10.16" width="0.254" layer="94"/>
-<wire x1="10.16" y1="10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
-<text x="-9.906" y="10.668" size="1.778" layer="95">&gt;NAME</text>
-<text x="-9.906" y="-20.066" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="CPVDD" x="-15.24" y="7.62" length="middle"/>
-<pin name="CAPP" x="-15.24" y="5.08" length="middle"/>
-<pin name="CPGND" x="-15.24" y="2.54" length="middle"/>
-<pin name="CAPM" x="-15.24" y="0" length="middle"/>
-<pin name="FMT" x="15.24" y="-2.54" length="middle" rot="R180"/>
-<pin name="LRCK" x="15.24" y="-5.08" length="middle" rot="R180"/>
-<pin name="OUTR" x="-15.24" y="-7.62" length="middle"/>
-<pin name="AVDD" x="-15.24" y="-10.16" length="middle"/>
-<pin name="DIN" x="15.24" y="-7.62" length="middle" rot="R180"/>
-<pin name="BCK" x="15.24" y="-10.16" length="middle" rot="R180"/>
-<pin name="OUTL" x="-15.24" y="-5.08" length="middle"/>
-<pin name="VNEG" x="-15.24" y="-2.54" length="middle"/>
-<pin name="XSMT" x="15.24" y="0" length="middle" rot="R180"/>
-<pin name="LDOO" x="15.24" y="2.54" length="middle" rot="R180"/>
-<pin name="DGND" x="15.24" y="5.08" length="middle" rot="R180"/>
-<pin name="DVDD" x="15.24" y="7.62" length="middle" rot="R180"/>
-<pin name="AGND" x="-15.24" y="-12.7" length="middle"/>
-<pin name="DEMP" x="-15.24" y="-15.24" length="middle"/>
-<pin name="FLT" x="15.24" y="-15.24" length="middle" rot="R180"/>
-<pin name="SCK" x="15.24" y="-12.7" length="middle" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="PCM5100">
-<description>PCM5100 Stereo DAC</description>
-<gates>
-<gate name="G$1" symbol="PCM5100" x="0" y="2.54"/>
-</gates>
-<devices>
-<device name="" package="PW_R-PDSO-G20">
-<connects>
-<connect gate="G$1" pin="AGND" pad="9"/>
-<connect gate="G$1" pin="AVDD" pad="8"/>
-<connect gate="G$1" pin="BCK" pad="13"/>
-<connect gate="G$1" pin="CAPM" pad="4"/>
-<connect gate="G$1" pin="CAPP" pad="2"/>
-<connect gate="G$1" pin="CPGND" pad="3"/>
-<connect gate="G$1" pin="CPVDD" pad="1"/>
-<connect gate="G$1" pin="DEMP" pad="10"/>
-<connect gate="G$1" pin="DGND" pad="19"/>
-<connect gate="G$1" pin="DIN" pad="14"/>
-<connect gate="G$1" pin="DVDD" pad="20"/>
-<connect gate="G$1" pin="FLT" pad="11"/>
-<connect gate="G$1" pin="FMT" pad="16"/>
-<connect gate="G$1" pin="LDOO" pad="18"/>
-<connect gate="G$1" pin="LRCK" pad="15"/>
-<connect gate="G$1" pin="OUTL" pad="6"/>
-<connect gate="G$1" pin="OUTR" pad="7"/>
-<connect gate="G$1" pin="SCK" pad="12"/>
-<connect gate="G$1" pin="VNEG" pad="5"/>
-<connect gate="G$1" pin="XSMT" pad="17"/>
-</connects>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -1283,20 +1161,18 @@ DIN A4, landscape with location and doc. field</description>
 <smd name="CD_SW2" x="-5.53" y="3.82" dx="1.55" dy="1" layer="1" rot="R180"/>
 <smd name="NC3" x="-5.86" y="2.29" dx="1.4" dy="0.8" layer="1" rot="R90"/>
 <text x="-3.81" y="-8.89" size="1.27" layer="21">MICROSD</text>
-<wire x1="-5.334" y1="-5.9436" x2="-5.334" y2="-9.652" width="0.127" layer="21"/>
+<wire x1="-5.334" y1="-6.3246" x2="-5.334" y2="-9.652" width="0.127" layer="21"/>
 <wire x1="-5.334" y1="-9.652" x2="-5.08" y2="-9.906" width="0.127" layer="21"/>
 <wire x1="-5.08" y1="-9.906" x2="5.588" y2="-9.906" width="0.127" layer="21"/>
 <wire x1="5.588" y1="-9.906" x2="5.842" y2="-9.652" width="0.127" layer="21"/>
-<wire x1="5.842" y1="-9.652" x2="5.842" y2="-5.9436" width="0.127" layer="21"/>
+<wire x1="5.842" y1="-9.652" x2="5.842" y2="-6.3246" width="0.127" layer="21"/>
 <text x="-2.54" y="1.27" size="1.27" layer="25">&gt;NAME</text>
-<wire x1="-5.8166" y1="5.6134" x2="6.1214" y2="5.6134" width="0.127" layer="21"/>
-<wire x1="6.1214" y1="5.6134" x2="6.1214" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="6.1214" y1="-5.9436" x2="5.842" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="5.842" y1="-5.9436" x2="-5.334" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="-5.334" y1="-5.9436" x2="-5.8166" y2="-5.9436" width="0.127" layer="21"/>
-<wire x1="-5.8166" y1="-5.9182" x2="-5.842" y2="-5.9182" width="0.127" layer="21"/>
-<wire x1="-5.842" y1="-5.9182" x2="-5.842" y2="5.6134" width="0.127" layer="21"/>
+<wire x1="-5.8166" y1="5.6134" x2="4.953" y2="5.6134" width="0.127" layer="21"/>
+<wire x1="-5.842" y1="-4.445" x2="-5.842" y2="1.397" width="0.127" layer="21"/>
 <text x="-2.54" y="-1.27" size="1.27" layer="25">&gt;VALUE</text>
+<wire x1="-5.8166" y1="4.5212" x2="-5.8166" y2="5.6134" width="0.127" layer="21"/>
+<wire x1="6.1214" y1="-4.4196" x2="6.1214" y2="2.0066" width="0.127" layer="21"/>
+<wire x1="6.1214" y1="3.8354" x2="6.1214" y2="4.4196" width="0.127" layer="21"/>
 </package>
 </packages>
 <symbols>
@@ -3590,6 +3466,130 @@ Source: STM32F410_8_B_LQFP64.bsd</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="stm32f410rb_pcm5100">
+<description>Generated from &lt;b&gt;stm32f410rb_pcm5100.sch&lt;/b&gt;&lt;p&gt;
+by exp-lbrs.ulp</description>
+<packages>
+<package name="ROBERTSONICS_PW_R-PDSO-G20">
+<description>&lt;b&gt;PLASTIC SMALL-OUTLINE PACKAGE SO 20&lt;/b&gt; JEDEC MO-153, PW Type&lt;p&gt;
+Source: www.ti.com/.. slvs087l.pdf</description>
+<circle x="-2.525" y="-1.3" radius="0.325" width="0.2032" layer="21"/>
+<wire x1="-3.2" y1="1.896" x2="3.2" y2="1.896" width="0.2032" layer="21"/>
+<wire x1="3.2" y1="1.896" x2="3.2" y2="-1.896" width="0.2032" layer="21"/>
+<wire x1="3.2" y1="-1.896" x2="-3.2" y2="-1.896" width="0.2032" layer="21"/>
+<wire x1="-3.2" y1="-1.896" x2="-3.2" y2="1.896" width="0.2032" layer="21"/>
+<rectangle x1="-3.075" y1="-3.046" x2="-2.775" y2="-1.976" layer="51"/>
+<rectangle x1="-2.425" y1="-3.046" x2="-2.125" y2="-1.976" layer="51"/>
+<rectangle x1="-1.775" y1="-3.046" x2="-1.475" y2="-1.976" layer="51"/>
+<rectangle x1="-1.125" y1="-3.046" x2="-0.825" y2="-1.976" layer="51"/>
+<rectangle x1="-0.475" y1="-3.046" x2="-0.175" y2="-1.976" layer="51"/>
+<rectangle x1="0.175" y1="-3.046" x2="0.475" y2="-1.976" layer="51"/>
+<rectangle x1="0.825" y1="-3.046" x2="1.125" y2="-1.976" layer="51"/>
+<rectangle x1="1.475" y1="-3.046" x2="1.775" y2="-1.976" layer="51"/>
+<rectangle x1="2.125" y1="-3.046" x2="2.425" y2="-1.976" layer="51"/>
+<rectangle x1="2.775" y1="-3.046" x2="3.075" y2="-1.976" layer="51"/>
+<rectangle x1="2.775" y1="1.976" x2="3.075" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="2.125" y1="1.976" x2="2.425" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="1.475" y1="1.976" x2="1.775" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="0.825" y1="1.976" x2="1.125" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="0.175" y1="1.976" x2="0.475" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-0.475" y1="1.976" x2="-0.175" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-1.125" y1="1.976" x2="-0.825" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-1.775" y1="1.976" x2="-1.475" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-2.425" y1="1.976" x2="-2.125" y2="3.046" layer="51" rot="R180"/>
+<rectangle x1="-3.075" y1="1.976" x2="-2.775" y2="3.046" layer="51" rot="R180"/>
+<smd name="1" x="-2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="2" x="-2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="3" x="-1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="4" x="-0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="5" x="-0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="6" x="0.325" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="7" x="0.975" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="8" x="1.625" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="9" x="2.275" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="10" x="2.925" y="-2.9" dx="0.4" dy="1.2" layer="1"/>
+<smd name="11" x="2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="12" x="2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="13" x="1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="14" x="0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="15" x="0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="16" x="-0.325" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="17" x="-0.975" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="18" x="-1.625" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="19" x="-2.275" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<smd name="20" x="-2.925" y="2.9" dx="0.4" dy="1.2" layer="1" rot="R180"/>
+<text x="-3.81" y="-2.54" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="5.08" y="-2.54" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="ROBERTSONICS_PCM5100">
+<wire x1="-10.16" y1="10.16" x2="-10.16" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="-10.16" y1="-17.78" x2="10.16" y2="-17.78" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-17.78" x2="10.16" y2="10.16" width="0.254" layer="94"/>
+<wire x1="10.16" y1="10.16" x2="-10.16" y2="10.16" width="0.254" layer="94"/>
+<pin name="AGND" x="-15.24" y="-12.7" length="middle"/>
+<pin name="AVDD" x="-15.24" y="-10.16" length="middle"/>
+<pin name="BCK" x="15.24" y="-10.16" length="middle" rot="R180"/>
+<pin name="CAPM" x="-15.24" y="0" length="middle"/>
+<pin name="CAPP" x="-15.24" y="5.08" length="middle"/>
+<pin name="CPGND" x="-15.24" y="2.54" length="middle"/>
+<pin name="CPVDD" x="-15.24" y="7.62" length="middle"/>
+<pin name="DEMP" x="-15.24" y="-15.24" length="middle"/>
+<pin name="DGND" x="15.24" y="5.08" length="middle" rot="R180"/>
+<pin name="DIN" x="15.24" y="-7.62" length="middle" rot="R180"/>
+<pin name="DVDD" x="15.24" y="7.62" length="middle" rot="R180"/>
+<pin name="FLT" x="15.24" y="-15.24" length="middle" rot="R180"/>
+<pin name="FMT" x="15.24" y="-2.54" length="middle" rot="R180"/>
+<pin name="LDOO" x="15.24" y="2.54" length="middle" rot="R180"/>
+<pin name="LRCK" x="15.24" y="-5.08" length="middle" rot="R180"/>
+<pin name="OUTL" x="-15.24" y="-5.08" length="middle"/>
+<pin name="OUTR" x="-15.24" y="-7.62" length="middle"/>
+<pin name="SCK" x="15.24" y="-12.7" length="middle" rot="R180"/>
+<pin name="VNEG" x="-15.24" y="-2.54" length="middle"/>
+<pin name="XSMT" x="15.24" y="0" length="middle" rot="R180"/>
+<text x="-9.906" y="10.668" size="1.778" layer="95">&gt;NAME</text>
+<text x="-9.906" y="-20.066" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="ROBERTSONICS_PCM5100">
+<description>PCM5100 Stereo DAC</description>
+<gates>
+<gate name="G$1" symbol="ROBERTSONICS_PCM5100" x="0" y="2.54"/>
+</gates>
+<devices>
+<device name="" package="ROBERTSONICS_PW_R-PDSO-G20">
+<connects>
+<connect gate="G$1" pin="AGND" pad="9"/>
+<connect gate="G$1" pin="AVDD" pad="8"/>
+<connect gate="G$1" pin="BCK" pad="13"/>
+<connect gate="G$1" pin="CAPM" pad="4"/>
+<connect gate="G$1" pin="CAPP" pad="2"/>
+<connect gate="G$1" pin="CPGND" pad="3"/>
+<connect gate="G$1" pin="CPVDD" pad="1"/>
+<connect gate="G$1" pin="DEMP" pad="10"/>
+<connect gate="G$1" pin="DGND" pad="19"/>
+<connect gate="G$1" pin="DIN" pad="14"/>
+<connect gate="G$1" pin="DVDD" pad="20"/>
+<connect gate="G$1" pin="FLT" pad="11"/>
+<connect gate="G$1" pin="FMT" pad="16"/>
+<connect gate="G$1" pin="LDOO" pad="18"/>
+<connect gate="G$1" pin="LRCK" pad="15"/>
+<connect gate="G$1" pin="OUTL" pad="6"/>
+<connect gate="G$1" pin="OUTR" pad="7"/>
+<connect gate="G$1" pin="SCK" pad="12"/>
+<connect gate="G$1" pin="VNEG" pad="5"/>
+<connect gate="G$1" pin="XSMT" pad="17"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -3600,7 +3600,7 @@ Source: STM32F410_8_B_LQFP64.bsd</description>
 </class>
 </classes>
 <parts>
-<part name="U5" library="robertsonics" deviceset="PCM5100" device=""/>
+<part name="U5" library="stm32f410rb_pcm5100" deviceset="ROBERTSONICS_PCM5100" device=""/>
 <part name="C21" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
 <part name="C22" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
 <part name="C23" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
