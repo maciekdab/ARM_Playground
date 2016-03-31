@@ -1099,8 +1099,6 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <contactref element="IC1" pad="13"/>
 <wire x1="37.312" y1="36.936" x2="37.312" y2="38.67" width="0.3048" layer="16"/>
 <wire x1="37.312" y1="38.67" x2="37.708" y2="39.116" width="0.3048" layer="16"/>
-<wire x1="30.099" y1="36.565" x2="32.441" y2="36.615" width="0.3048" layer="16"/>
-<wire x1="32.441" y1="36.615" x2="32.762" y2="36.936" width="0.3048" layer="16"/>
 <wire x1="32.762" y1="36.936" x2="32.762" y2="36.072" width="0.3048" layer="16"/>
 <wire x1="32.762" y1="36.072" x2="33.5534" y2="35.1282" width="0.3048" layer="16"/>
 <wire x1="42.926" y1="51.054" x2="38.608" y2="55.372" width="0.3048" layer="16"/>
@@ -1184,6 +1182,8 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <wire x1="27.051" y1="26.1874" x2="24.6126" y2="28.6258" width="0.3048" layer="1"/>
 <wire x1="24.6126" y1="28.6258" x2="24.6126" y2="33.4264" width="0.3048" layer="1"/>
 <wire x1="24.6126" y1="33.4264" x2="27.94" y2="36.7538" width="0.3048" layer="1"/>
+<wire x1="30.099" y1="36.565" x2="32.391" y2="36.565" width="0.3048" layer="16"/>
+<wire x1="32.391" y1="36.565" x2="32.762" y2="36.936" width="0.3048" layer="16"/>
 </signal>
 <signal name="N$14">
 <contactref element="U5" pad="18"/>
