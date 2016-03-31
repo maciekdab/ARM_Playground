@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.01" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1288,7 +1288,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="-5.08" y1="-9.906" x2="5.588" y2="-9.906" width="0.127" layer="21"/>
 <wire x1="5.588" y1="-9.906" x2="5.842" y2="-9.652" width="0.127" layer="21"/>
 <wire x1="5.842" y1="-9.652" x2="5.842" y2="-5.9436" width="0.127" layer="21"/>
-<text x="-2.54" y="6.35" size="1.27" layer="25">MMC$1</text>
+<text x="-2.54" y="1.27" size="1.27" layer="25">&gt;NAME</text>
 <wire x1="-5.8166" y1="5.6134" x2="6.1214" y2="5.6134" width="0.127" layer="21"/>
 <wire x1="6.1214" y1="5.6134" x2="6.1214" y2="-5.9436" width="0.127" layer="21"/>
 <wire x1="6.1214" y1="-5.9436" x2="5.842" y2="-5.9436" width="0.127" layer="21"/>
@@ -1296,6 +1296,7 @@ DIN A4, landscape with location and doc. field</description>
 <wire x1="-5.334" y1="-5.9436" x2="-5.8166" y2="-5.9436" width="0.127" layer="21"/>
 <wire x1="-5.8166" y1="-5.9182" x2="-5.842" y2="-5.9182" width="0.127" layer="21"/>
 <wire x1="-5.842" y1="-5.9182" x2="-5.842" y2="5.6134" width="0.127" layer="21"/>
+<text x="-2.54" y="-1.27" size="1.27" layer="25">&gt;VALUE</text>
 </package>
 </packages>
 <symbols>
@@ -1315,11 +1316,12 @@ DIN A4, landscape with location and doc. field</description>
 <text x="27.94" y="2.54" size="1.778" layer="94" rot="R180">MICROSD</text>
 <pin name="CD_SW1" x="33.02" y="20.32" visible="pin" length="short" rot="R180"/>
 <pin name="CD_SW2" x="33.02" y="17.78" visible="pin" length="short" rot="R180"/>
-<text x="10.16" y="25.4" size="1.778" layer="95">MMC$1</text>
+<text x="10.16" y="30.48" size="1.778" layer="95">&gt;NAME</text>
+<text x="10.16" y="25.4" size="1.778" layer="95">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="MICROSD_AMPHENOL" prefix="MMC">
+<deviceset name="MICROSD_AMPHENOL" uservalue="yes">
 <description>AMPHENOL COMMERCIAL PRODUCTS
 
 The 114-00841-68 is a top mount 
@@ -3280,22 +3282,22 @@ Industrial temp</description>
 <packages>
 <package name="LQFP64">
 <description>Based on STM PCB landpattern recomendation</description>
-<wire x1="-5" y1="4.5" x2="-4.5" y2="5" width="0.1524" layer="21"/>
-<wire x1="-4.5" y1="5" x2="4.5" y2="5" width="0.1524" layer="21"/>
-<wire x1="4.5" y1="5" x2="5" y2="4.5" width="0.1524" layer="21"/>
-<wire x1="5" y1="4.5" x2="5" y2="-4.5" width="0.1524" layer="21"/>
-<wire x1="5" y1="-4.5" x2="4.5" y2="-5" width="0.1524" layer="21"/>
-<wire x1="4.5" y1="-5" x2="-4.5" y2="-5" width="0.1524" layer="21"/>
-<wire x1="-4.5" y1="-5" x2="-5" y2="-4.5" width="0.1524" layer="21"/>
-<wire x1="-5" y1="-4.5" x2="-5" y2="4.5" width="0.1524" layer="21"/>
-<wire x1="-5" y1="4.5" x2="-4.5" y2="5" width="0.1524" layer="51"/>
-<wire x1="-5" y1="-4.5" x2="-5" y2="4.5" width="0.1524" layer="51"/>
-<wire x1="-4.5" y1="-5" x2="-5" y2="-4.5" width="0.1524" layer="51"/>
-<wire x1="4.5" y1="-5" x2="-4.5" y2="-5" width="0.1524" layer="51"/>
-<wire x1="5" y1="-4.5" x2="4.5" y2="-5" width="0.1524" layer="51"/>
-<wire x1="5" y1="4.5" x2="5" y2="-4.5" width="0.1524" layer="51"/>
-<wire x1="4.5" y1="5" x2="5" y2="4.5" width="0.1524" layer="51"/>
-<wire x1="-4.5" y1="5" x2="4.5" y2="5" width="0.1524" layer="51"/>
+<wire x1="-4.746" y1="4.5" x2="-4.5" y2="4.746" width="0.1524" layer="21"/>
+<wire x1="-4.5" y1="4.746" x2="4.5" y2="4.746" width="0.1524" layer="21"/>
+<wire x1="4.5" y1="4.746" x2="4.746" y2="4.5" width="0.1524" layer="21"/>
+<wire x1="4.746" y1="4.5" x2="4.746" y2="-4.5" width="0.1524" layer="21"/>
+<wire x1="4.746" y1="-4.5" x2="4.5" y2="-4.746" width="0.1524" layer="21"/>
+<wire x1="4.5" y1="-4.746" x2="-4.5" y2="-4.746" width="0.1524" layer="21"/>
+<wire x1="-4.5" y1="-4.746" x2="-4.746" y2="-4.5" width="0.1524" layer="21"/>
+<wire x1="-4.746" y1="-4.5" x2="-4.746" y2="4.5" width="0.1524" layer="21"/>
+<wire x1="-4.746" y1="4.5" x2="-4.5" y2="4.746" width="0.1524" layer="51"/>
+<wire x1="-4.746" y1="-4.5" x2="-4.746" y2="4.5" width="0.1524" layer="51"/>
+<wire x1="-4.5" y1="-4.746" x2="-4.746" y2="-4.5" width="0.1524" layer="51"/>
+<wire x1="4.5" y1="-4.746" x2="-4.5" y2="-4.746" width="0.1524" layer="51"/>
+<wire x1="4.746" y1="-4.5" x2="4.5" y2="-4.746" width="0.1524" layer="51"/>
+<wire x1="4.746" y1="4.5" x2="4.746" y2="-4.5" width="0.1524" layer="51"/>
+<wire x1="4.5" y1="4.746" x2="4.746" y2="4.5" width="0.1524" layer="51"/>
+<wire x1="-4.5" y1="4.746" x2="4.5" y2="4.746" width="0.1524" layer="51"/>
 <circle x="-3.5" y="3.5" radius="0.4" width="0.1524" layer="21"/>
 <circle x="-3.5" y="3.5" radius="0.4" width="0.1524" layer="51"/>
 <smd name="1" x="-6.05" y="3.75" dx="1.962" dy="0.3" layer="1"/>
@@ -3364,70 +3366,70 @@ Industrial temp</description>
 <smd name="64" x="-3.75" y="6.05" dx="0.3" dy="1.962" layer="1"/>
 <text x="-1.56" y="0.354" size="0.635" layer="25" font="vector" ratio="16">&gt;NAME</text>
 <text x="-1.814" y="-1.0201" size="0.635" layer="27" font="vector" ratio="16">&gt;VALUE</text>
-<rectangle x1="-6" y1="3.64" x2="-5" y2="3.86" layer="51"/>
-<rectangle x1="-3.86" y1="-6" x2="-3.64" y2="-5" layer="51"/>
-<rectangle x1="5" y1="3.64" x2="6" y2="3.86" layer="51"/>
-<rectangle x1="-3.86" y1="5" x2="-3.64" y2="6" layer="51"/>
-<rectangle x1="-6" y1="3.14" x2="-5" y2="3.36" layer="51"/>
-<rectangle x1="-6" y1="2.64" x2="-5" y2="2.86" layer="51"/>
-<rectangle x1="-6" y1="2.14" x2="-5" y2="2.36" layer="51"/>
-<rectangle x1="-6" y1="1.64" x2="-5" y2="1.86" layer="51"/>
-<rectangle x1="-6" y1="1.14" x2="-5" y2="1.36" layer="51"/>
-<rectangle x1="-6" y1="0.64" x2="-5" y2="0.86" layer="51"/>
-<rectangle x1="-6" y1="0.14" x2="-5" y2="0.36" layer="51"/>
-<rectangle x1="-6" y1="-0.36" x2="-5" y2="-0.14" layer="51"/>
-<rectangle x1="-6" y1="-0.86" x2="-5" y2="-0.64" layer="51"/>
-<rectangle x1="-6" y1="-1.36" x2="-5" y2="-1.14" layer="51"/>
-<rectangle x1="-6" y1="-1.86" x2="-5" y2="-1.64" layer="51"/>
-<rectangle x1="-6" y1="-2.36" x2="-5" y2="-2.14" layer="51"/>
-<rectangle x1="-6" y1="-2.86" x2="-5" y2="-2.64" layer="51"/>
-<rectangle x1="-6" y1="-3.36" x2="-5" y2="-3.14" layer="51"/>
-<rectangle x1="-6" y1="-3.86" x2="-5" y2="-3.64" layer="51"/>
-<rectangle x1="-3.36" y1="-6" x2="-3.14" y2="-5" layer="51"/>
-<rectangle x1="-2.86" y1="-6" x2="-2.64" y2="-5" layer="51"/>
-<rectangle x1="-2.36" y1="-6" x2="-2.14" y2="-5" layer="51"/>
-<rectangle x1="-1.86" y1="-6" x2="-1.64" y2="-5" layer="51"/>
-<rectangle x1="-1.36" y1="-6" x2="-1.14" y2="-5" layer="51"/>
-<rectangle x1="-0.86" y1="-6" x2="-0.64" y2="-5" layer="51"/>
-<rectangle x1="-0.36" y1="-6" x2="-0.14" y2="-5" layer="51"/>
-<rectangle x1="0.14" y1="-6" x2="0.36" y2="-5" layer="51"/>
-<rectangle x1="0.64" y1="-6" x2="0.86" y2="-5" layer="51"/>
-<rectangle x1="1.14" y1="-6" x2="1.36" y2="-5" layer="51"/>
-<rectangle x1="1.64" y1="-6" x2="1.86" y2="-5" layer="51"/>
-<rectangle x1="2.14" y1="-6" x2="2.36" y2="-5" layer="51"/>
-<rectangle x1="2.64" y1="-6" x2="2.86" y2="-5" layer="51"/>
-<rectangle x1="3.14" y1="-6" x2="3.36" y2="-5" layer="51"/>
-<rectangle x1="3.64" y1="-6" x2="3.86" y2="-5" layer="51"/>
-<rectangle x1="5" y1="3.14" x2="6" y2="3.36" layer="51"/>
-<rectangle x1="5" y1="2.64" x2="6" y2="2.86" layer="51"/>
-<rectangle x1="5" y1="2.14" x2="6" y2="2.36" layer="51"/>
-<rectangle x1="5" y1="1.64" x2="6" y2="1.86" layer="51"/>
-<rectangle x1="5" y1="1.14" x2="6" y2="1.36" layer="51"/>
-<rectangle x1="5" y1="0.64" x2="6" y2="0.86" layer="51"/>
-<rectangle x1="5" y1="0.14" x2="6" y2="0.36" layer="51"/>
-<rectangle x1="5" y1="-0.36" x2="6" y2="-0.14" layer="51"/>
-<rectangle x1="5" y1="-0.86" x2="6" y2="-0.64" layer="51"/>
-<rectangle x1="5" y1="-1.36" x2="6" y2="-1.14" layer="51"/>
-<rectangle x1="5" y1="-1.86" x2="6" y2="-1.64" layer="51"/>
-<rectangle x1="5" y1="-2.36" x2="6" y2="-2.14" layer="51"/>
-<rectangle x1="5" y1="-2.86" x2="6" y2="-2.64" layer="51"/>
-<rectangle x1="5" y1="-3.36" x2="6" y2="-3.14" layer="51"/>
-<rectangle x1="5" y1="-3.86" x2="6" y2="-3.64" layer="51"/>
-<rectangle x1="-3.36" y1="5" x2="-3.14" y2="6" layer="51"/>
-<rectangle x1="-2.86" y1="5" x2="-2.64" y2="6" layer="51"/>
-<rectangle x1="-2.36" y1="5" x2="-2.14" y2="6" layer="51"/>
-<rectangle x1="-1.86" y1="5" x2="-1.64" y2="6" layer="51"/>
-<rectangle x1="-1.36" y1="5" x2="-1.14" y2="6" layer="51"/>
-<rectangle x1="-0.86" y1="5" x2="-0.64" y2="6" layer="51"/>
-<rectangle x1="-0.36" y1="5" x2="-0.14" y2="6" layer="51"/>
-<rectangle x1="0.14" y1="5" x2="0.36" y2="6" layer="51"/>
-<rectangle x1="0.64" y1="5" x2="0.86" y2="6" layer="51"/>
-<rectangle x1="1.14" y1="5" x2="1.36" y2="6" layer="51"/>
-<rectangle x1="1.64" y1="5" x2="1.86" y2="6" layer="51"/>
-<rectangle x1="2.14" y1="5" x2="2.36" y2="6" layer="51"/>
-<rectangle x1="2.64" y1="5" x2="2.86" y2="6" layer="51"/>
-<rectangle x1="3.14" y1="5" x2="3.36" y2="6" layer="51"/>
-<rectangle x1="3.64" y1="5" x2="3.86" y2="6" layer="51"/>
+<rectangle x1="-5.8222" y1="3.64" x2="-4.8222" y2="3.86" layer="51"/>
+<rectangle x1="-3.86" y1="-5.8222" x2="-3.64" y2="-4.8222" layer="51"/>
+<rectangle x1="4.8222" y1="3.64" x2="5.8222" y2="3.86" layer="51"/>
+<rectangle x1="-3.86" y1="4.8222" x2="-3.64" y2="5.8222" layer="51"/>
+<rectangle x1="-5.8222" y1="3.14" x2="-4.8222" y2="3.36" layer="51"/>
+<rectangle x1="-5.8222" y1="2.64" x2="-4.8222" y2="2.86" layer="51"/>
+<rectangle x1="-5.8222" y1="2.14" x2="-4.8222" y2="2.36" layer="51"/>
+<rectangle x1="-5.8222" y1="1.64" x2="-4.8222" y2="1.86" layer="51"/>
+<rectangle x1="-5.8222" y1="1.14" x2="-4.8222" y2="1.36" layer="51"/>
+<rectangle x1="-5.8222" y1="0.64" x2="-4.8222" y2="0.86" layer="51"/>
+<rectangle x1="-5.8222" y1="0.14" x2="-4.8222" y2="0.36" layer="51"/>
+<rectangle x1="-5.8222" y1="-0.36" x2="-4.8222" y2="-0.14" layer="51"/>
+<rectangle x1="-5.8222" y1="-0.86" x2="-4.8222" y2="-0.64" layer="51"/>
+<rectangle x1="-5.8222" y1="-1.36" x2="-4.8222" y2="-1.14" layer="51"/>
+<rectangle x1="-5.8222" y1="-1.86" x2="-4.8222" y2="-1.64" layer="51"/>
+<rectangle x1="-5.8222" y1="-2.36" x2="-4.8222" y2="-2.14" layer="51"/>
+<rectangle x1="-5.8222" y1="-2.86" x2="-4.8222" y2="-2.64" layer="51"/>
+<rectangle x1="-5.8222" y1="-3.36" x2="-4.8222" y2="-3.14" layer="51"/>
+<rectangle x1="-5.8222" y1="-3.86" x2="-4.8222" y2="-3.64" layer="51"/>
+<rectangle x1="-3.36" y1="-5.8222" x2="-3.14" y2="-4.8222" layer="51"/>
+<rectangle x1="-2.86" y1="-5.8222" x2="-2.64" y2="-4.8222" layer="51"/>
+<rectangle x1="-2.36" y1="-5.8222" x2="-2.14" y2="-4.8222" layer="51"/>
+<rectangle x1="-1.86" y1="-5.8222" x2="-1.64" y2="-4.8222" layer="51"/>
+<rectangle x1="-1.36" y1="-5.8222" x2="-1.14" y2="-4.8222" layer="51"/>
+<rectangle x1="-0.86" y1="-5.8222" x2="-0.64" y2="-4.8222" layer="51"/>
+<rectangle x1="-0.36" y1="-5.8222" x2="-0.14" y2="-4.8222" layer="51"/>
+<rectangle x1="0.14" y1="-5.8222" x2="0.36" y2="-4.8222" layer="51"/>
+<rectangle x1="0.64" y1="-5.8222" x2="0.86" y2="-4.8222" layer="51"/>
+<rectangle x1="1.14" y1="-5.8222" x2="1.36" y2="-4.8222" layer="51"/>
+<rectangle x1="1.64" y1="-5.8222" x2="1.86" y2="-4.8222" layer="51"/>
+<rectangle x1="2.14" y1="-5.8222" x2="2.36" y2="-4.8222" layer="51"/>
+<rectangle x1="2.64" y1="-5.8222" x2="2.86" y2="-4.8222" layer="51"/>
+<rectangle x1="3.14" y1="-5.8222" x2="3.36" y2="-4.8222" layer="51"/>
+<rectangle x1="3.64" y1="-5.8222" x2="3.86" y2="-4.8222" layer="51"/>
+<rectangle x1="4.8222" y1="3.14" x2="5.8222" y2="3.36" layer="51"/>
+<rectangle x1="4.8222" y1="2.64" x2="5.8222" y2="2.86" layer="51"/>
+<rectangle x1="4.8222" y1="2.14" x2="5.8222" y2="2.36" layer="51"/>
+<rectangle x1="4.8222" y1="1.64" x2="5.8222" y2="1.86" layer="51"/>
+<rectangle x1="4.8222" y1="1.14" x2="5.8222" y2="1.36" layer="51"/>
+<rectangle x1="4.8222" y1="0.64" x2="5.8222" y2="0.86" layer="51"/>
+<rectangle x1="4.8222" y1="0.14" x2="5.8222" y2="0.36" layer="51"/>
+<rectangle x1="4.8222" y1="-0.36" x2="5.8222" y2="-0.14" layer="51"/>
+<rectangle x1="4.8222" y1="-0.86" x2="5.8222" y2="-0.64" layer="51"/>
+<rectangle x1="4.8222" y1="-1.36" x2="5.8222" y2="-1.14" layer="51"/>
+<rectangle x1="4.8222" y1="-1.86" x2="5.8222" y2="-1.64" layer="51"/>
+<rectangle x1="4.8222" y1="-2.36" x2="5.8222" y2="-2.14" layer="51"/>
+<rectangle x1="4.8222" y1="-2.86" x2="5.8222" y2="-2.64" layer="51"/>
+<rectangle x1="4.8222" y1="-3.36" x2="5.8222" y2="-3.14" layer="51"/>
+<rectangle x1="4.8222" y1="-3.86" x2="5.8222" y2="-3.64" layer="51"/>
+<rectangle x1="-3.36" y1="4.8222" x2="-3.14" y2="5.8222" layer="51"/>
+<rectangle x1="-2.86" y1="4.8222" x2="-2.64" y2="5.8222" layer="51"/>
+<rectangle x1="-2.36" y1="4.8222" x2="-2.14" y2="5.8222" layer="51"/>
+<rectangle x1="-1.86" y1="4.8222" x2="-1.64" y2="5.8222" layer="51"/>
+<rectangle x1="-1.36" y1="4.8222" x2="-1.14" y2="5.8222" layer="51"/>
+<rectangle x1="-0.86" y1="4.8222" x2="-0.64" y2="5.8222" layer="51"/>
+<rectangle x1="-0.36" y1="4.8222" x2="-0.14" y2="5.8222" layer="51"/>
+<rectangle x1="0.14" y1="4.8222" x2="0.36" y2="5.8222" layer="51"/>
+<rectangle x1="0.64" y1="4.8222" x2="0.86" y2="5.8222" layer="51"/>
+<rectangle x1="1.14" y1="4.8222" x2="1.36" y2="5.8222" layer="51"/>
+<rectangle x1="1.64" y1="4.8222" x2="1.86" y2="5.8222" layer="51"/>
+<rectangle x1="2.14" y1="4.8222" x2="2.36" y2="5.8222" layer="51"/>
+<rectangle x1="2.64" y1="4.8222" x2="2.86" y2="5.8222" layer="51"/>
+<rectangle x1="3.14" y1="4.8222" x2="3.36" y2="5.8222" layer="51"/>
+<rectangle x1="3.64" y1="4.8222" x2="3.86" y2="5.8222" layer="51"/>
 </package>
 </packages>
 <symbols>
@@ -3639,7 +3641,7 @@ Source: STM32F410_8_B_LQFP64.bsd</description>
 <part name="BOOT0_1" library="SparkFun-Passives" deviceset="RESISTOR" device="0603-RES"/>
 <part name="C9" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
-<part name="MMC1" library="microsd_amphenol" deviceset="MICROSD_AMPHENOL" device=""/>
+<part name="MMC1" library="microsd_amphenol" deviceset="MICROSD_AMPHENOL" device="" value="Amphenol"/>
 <part name="P+6" library="supply1" deviceset="VCC" device="" value="+3V3"/>
 <part name="P+1" library="supply1" deviceset="VCC" device="" value="+3V3"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
@@ -3652,13 +3654,26 @@ Source: STM32F410_8_B_LQFP64.bsd</description>
 <part name="JP5" library="SparkFun-Connectors" deviceset="M03" device="SCREW" value="BTN_5-7"/>
 <part name="JP6" library="SparkFun-Connectors" deviceset="M04" device="SCREW" value="AUDIO_OUT"/>
 <part name="IC1" library="pel_stm32" deviceset="STM32F410_8_B_LQFP64" device=""/>
-<part name="JP2" library="SparkFun-Connectors" deviceset="M02" device="3.5MM"/>
+<part name="JP2" library="SparkFun-Connectors" deviceset="M02" device="3.5MM" value="Vsupply - 3.3Vcc"/>
 <part name="P+4" library="supply1" deviceset="VCC" device="" value="+3V3"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
 <plain>
+<rectangle x1="233.172" y1="22.606" x2="234.442" y2="22.86" layer="94"/>
+<rectangle x1="233.172" y1="22.098" x2="234.442" y2="22.352" layer="94"/>
+<rectangle x1="233.172" y1="21.59" x2="234.442" y2="21.844" layer="94"/>
+<rectangle x1="235.712" y1="22.606" x2="236.982" y2="22.86" layer="94"/>
+<rectangle x1="235.712" y1="22.098" x2="236.982" y2="22.352" layer="94"/>
+<rectangle x1="235.712" y1="21.59" x2="236.982" y2="21.844" layer="94"/>
+<rectangle x1="234.188" y1="22.098" x2="235.458" y2="22.352" layer="94" rot="R90"/>
+<rectangle x1="234.696" y1="22.098" x2="235.966" y2="22.352" layer="94" rot="R90"/>
+<rectangle x1="232.664" y1="23.114" x2="237.49" y2="23.368" layer="94"/>
+<rectangle x1="232.664" y1="19.812" x2="237.49" y2="20.066" layer="94"/>
+<text x="234.188" y="20.32" size="1.016" layer="94" ratio="20">TT</text>
+<rectangle x1="237.236" y1="20.066" x2="237.49" y2="23.114" layer="94"/>
+<rectangle x1="232.664" y1="20.066" x2="232.918" y2="23.114" layer="94"/>
 </plain>
 <instances>
 <instance part="U5" gate="G$1" x="211.582" y="110.236" rot="R90"/>
@@ -3722,7 +3737,10 @@ Source: STM32F410_8_B_LQFP64.bsd</description>
 <attribute name="VALUE" x="76.962" y="123.063" size="1.778" layer="96"/>
 </instance>
 <instance part="GND14" gate="1" x="74.422" y="126.746" rot="R270"/>
-<instance part="MMC1" gate="G$1" x="138.43" y="131.826" smashed="yes"/>
+<instance part="MMC1" gate="G$1" x="138.43" y="131.826" smashed="yes">
+<attribute name="NAME" x="148.59" y="159.766" size="1.778" layer="95"/>
+<attribute name="VALUE" x="151.13" y="157.226" size="1.778" layer="95"/>
+</instance>
 <instance part="P+6" gate="VCC" x="87.122" y="162.814"/>
 <instance part="P+1" gate="VCC" x="133.604" y="165.1"/>
 <instance part="GND15" gate="1" x="133.35" y="129.54"/>
