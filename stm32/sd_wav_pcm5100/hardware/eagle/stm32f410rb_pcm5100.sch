@@ -3600,7 +3600,7 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 </class>
 </classes>
 <parts>
-<part name="U5" library="stm32f410rb_pcm5100" deviceset="ROBERTSONICS_PCM5100" device=""/>
+<part name="U5" library="stm32f410rb_pcm5100" deviceset="ROBERTSONICS_PCM5100" device="" value="PCM5100"/>
 <part name="C21" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
 <part name="C22" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
 <part name="C23" library="SparkFun-Passives" deviceset="CAP" device="0805" value="0.1uF"/>
@@ -3653,7 +3653,7 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <part name="JP3" library="SparkFun-Connectors" deviceset="M04" device="SCREW" value="BTN_1-4"/>
 <part name="JP5" library="SparkFun-Connectors" deviceset="M03" device="SCREW" value="BTN_5-7"/>
 <part name="JP6" library="SparkFun-Connectors" deviceset="M04" device="SCREW" value="AUDIO_OUT"/>
-<part name="IC1" library="pel_stm32" deviceset="STM32F410_8_B_LQFP64" device=""/>
+<part name="IC1" library="pel_stm32" deviceset="STM32F410_8_B_LQFP64" device="" value="STM32F410"/>
 <part name="JP2" library="SparkFun-Connectors" deviceset="M02" device="3.5MM" value="Vsupply - 3.3Vcc"/>
 <part name="P+4" library="supply1" deviceset="VCC" device="" value="+3V3"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
