@@ -1293,29 +1293,29 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pad name="4" x="7.62" y="0" drill="1.016" diameter="1.8796"/>
 </package>
 <package name="SCREWTERMINAL-3.5MM-4">
-<wire x1="-2.3" y1="3.4" x2="12.8" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="3.4" x2="12.8" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="-2.8" x2="12.8" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="-3.6" x2="-2.3" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-3.6" x2="-2.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-2.8" x2="-2.3" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="-2.8" x2="-2.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-1.35" x2="-2.7" y2="-1.35" width="0.2032" layer="51"/>
-<wire x1="-2.7" y1="-1.35" x2="-2.7" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="-2.7" y1="-2.35" x2="-2.3" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="12.8" y1="3.15" x2="13.2" y2="3.15" width="0.2032" layer="51"/>
-<wire x1="13.2" y1="3.15" x2="13.2" y2="2.15" width="0.2032" layer="51"/>
-<wire x1="13.2" y1="2.15" x2="12.8" y2="2.15" width="0.2032" layer="51"/>
-<circle x="0" y="0" radius="0.425" width="0.001" layer="51"/>
-<circle x="3.5" y="0" radius="0.425" width="0.001" layer="51"/>
-<circle x="7" y="0" radius="0.425" width="0.001" layer="51"/>
-<circle x="10.5" y="0" radius="0.425" width="0.001" layer="51"/>
-<pad name="1" x="0" y="0" drill="1.2" diameter="2.032" shape="square"/>
-<pad name="2" x="3.5" y="0" drill="1.2" diameter="2.032"/>
-<pad name="3" x="7" y="0" drill="1.2" diameter="2.032"/>
-<pad name="4" x="10.5" y="0" drill="1.2" diameter="2.032"/>
-<text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
-<text x="-1.27" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
+<wire x1="-7.634" y1="3.4" x2="7.466" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="7.466" y1="3.4" x2="7.466" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="7.466" y1="-2.8" x2="7.466" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="7.466" y1="-3.6" x2="-7.634" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="-7.634" y1="-3.6" x2="-7.634" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-7.634" y1="-2.8" x2="-7.634" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="7.466" y1="-2.8" x2="-7.634" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-7.634" y1="-1.35" x2="-8.034" y2="-1.35" width="0.2032" layer="51"/>
+<wire x1="-8.034" y1="-1.35" x2="-8.034" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="-8.034" y1="-2.35" x2="-7.634" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="7.466" y1="3.15" x2="7.866" y2="3.15" width="0.2032" layer="51"/>
+<wire x1="7.866" y1="3.15" x2="7.866" y2="2.15" width="0.2032" layer="51"/>
+<wire x1="7.866" y1="2.15" x2="7.466" y2="2.15" width="0.2032" layer="51"/>
+<circle x="-5.334" y="0" radius="0.425" width="0.001" layer="51"/>
+<circle x="-1.834" y="0" radius="0.425" width="0.001" layer="51"/>
+<circle x="1.666" y="0" radius="0.425" width="0.001" layer="51"/>
+<circle x="5.166" y="0" radius="0.425" width="0.001" layer="51"/>
+<pad name="1" x="-5.334" y="0" drill="1.2" diameter="2.032" shape="square"/>
+<pad name="2" x="-1.834" y="0" drill="1.2" diameter="2.032"/>
+<pad name="3" x="1.666" y="0" drill="1.2" diameter="2.032"/>
+<pad name="4" x="5.166" y="0" drill="1.2" diameter="2.032"/>
+<text x="-6.604" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-6.604" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
 <package name="1X04-1.27MM">
 <wire x1="-0.381" y1="-0.889" x2="0.381" y2="-0.889" width="0.127" layer="21"/>
@@ -1502,29 +1502,29 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <wire x1="4.3" y1="-1.6" x2="4.3" y2="0" width="0.2032" layer="21"/>
 </package>
 <package name="SCREWTERMINAL-3.5MM-4_LOCK">
-<wire x1="-2.3" y1="3.4" x2="12.8" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="3.4" x2="12.8" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="-2.8" x2="12.8" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="-3.6" x2="-2.3" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-3.6" x2="-2.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-2.8" x2="-2.3" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="12.8" y1="-2.8" x2="-2.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-1.35" x2="-2.7" y2="-1.35" width="0.2032" layer="51"/>
-<wire x1="-2.7" y1="-1.35" x2="-2.7" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="-2.7" y1="-2.35" x2="-2.3" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="12.8" y1="3.15" x2="13.2" y2="3.15" width="0.2032" layer="51"/>
-<wire x1="13.2" y1="3.15" x2="13.2" y2="2.15" width="0.2032" layer="51"/>
-<wire x1="13.2" y1="2.15" x2="12.8" y2="2.15" width="0.2032" layer="51"/>
-<circle x="0" y="0" radius="0.425" width="0.001" layer="51"/>
-<circle x="3.5" y="0" radius="0.425" width="0.001" layer="51"/>
-<circle x="7" y="0" radius="0.425" width="0.001" layer="51"/>
-<circle x="10.5" y="0" radius="0.425" width="0.001" layer="51"/>
-<pad name="1" x="-0.1778" y="0" drill="1.2" diameter="2.032" shape="square"/>
-<pad name="2" x="3.6778" y="0" drill="1.2" diameter="2.032"/>
-<pad name="3" x="6.8222" y="0" drill="1.2" diameter="2.032"/>
-<pad name="4" x="10.6778" y="0" drill="1.2" diameter="2.032"/>
-<text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
-<text x="-1.27" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
+<wire x1="-7.38" y1="3.4" x2="7.72" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="7.72" y1="3.4" x2="7.72" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="7.72" y1="-2.8" x2="7.72" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="7.72" y1="-3.6" x2="-7.38" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="-7.38" y1="-3.6" x2="-7.38" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-7.38" y1="-2.8" x2="-7.38" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="7.72" y1="-2.8" x2="-7.38" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-7.38" y1="-1.35" x2="-7.78" y2="-1.35" width="0.2032" layer="51"/>
+<wire x1="-7.78" y1="-1.35" x2="-7.78" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="-7.78" y1="-2.35" x2="-7.38" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="7.72" y1="3.15" x2="8.12" y2="3.15" width="0.2032" layer="51"/>
+<wire x1="8.12" y1="3.15" x2="8.12" y2="2.15" width="0.2032" layer="51"/>
+<wire x1="8.12" y1="2.15" x2="7.72" y2="2.15" width="0.2032" layer="51"/>
+<circle x="-5.08" y="0" radius="0.425" width="0.001" layer="51"/>
+<circle x="-1.58" y="0" radius="0.425" width="0.001" layer="51"/>
+<circle x="1.92" y="0" radius="0.425" width="0.001" layer="51"/>
+<circle x="5.42" y="0" radius="0.425" width="0.001" layer="51"/>
+<pad name="1" x="-5.2578" y="0" drill="1.2" diameter="2.032" shape="square"/>
+<pad name="2" x="-1.4022" y="0" drill="1.2" diameter="2.032"/>
+<pad name="3" x="1.7422" y="0" drill="1.2" diameter="2.032"/>
+<pad name="4" x="5.5978" y="0" drill="1.2" diameter="2.032"/>
+<text x="-6.35" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-6.35" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
 <package name="1X04-1MM-RA">
 <wire x1="-1.5" y1="-4.6" x2="1.5" y2="-4.6" width="0.254" layer="21"/>
@@ -1687,24 +1687,24 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <pad name="3" x="5.08" y="0" drill="1.016" diameter="1.8796"/>
 </package>
 <package name="SCREWTERMINAL-3.5MM-3">
-<wire x1="-2.3" y1="3.4" x2="9.3" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="9.3" y1="3.4" x2="9.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="9.3" y1="-2.8" x2="9.3" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="9.3" y1="-3.6" x2="-2.3" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-3.6" x2="-2.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-2.8" x2="-2.3" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="9.3" y1="-2.8" x2="-2.3" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-2.3" y1="-1.35" x2="-2.7" y2="-1.35" width="0.2032" layer="51"/>
-<wire x1="-2.7" y1="-1.35" x2="-2.7" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="-2.7" y1="-2.35" x2="-2.3" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="9.3" y1="3.15" x2="9.7" y2="3.15" width="0.2032" layer="51"/>
-<wire x1="9.7" y1="3.15" x2="9.7" y2="2.15" width="0.2032" layer="51"/>
-<wire x1="9.7" y1="2.15" x2="9.3" y2="2.15" width="0.2032" layer="51"/>
-<pad name="1" x="0" y="0" drill="1.2" diameter="2.413" shape="square"/>
-<pad name="2" x="3.5" y="0" drill="1.2" diameter="2.413"/>
-<pad name="3" x="7" y="0" drill="1.2" diameter="2.413"/>
-<text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
-<text x="-1.27" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
+<wire x1="-5.856" y1="3.4" x2="5.744" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="5.744" y1="3.4" x2="5.744" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="5.744" y1="-2.8" x2="5.744" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="5.744" y1="-3.6" x2="-5.856" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="-5.856" y1="-3.6" x2="-5.856" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-5.856" y1="-2.8" x2="-5.856" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="5.744" y1="-2.8" x2="-5.856" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-5.856" y1="-1.35" x2="-6.256" y2="-1.35" width="0.2032" layer="51"/>
+<wire x1="-6.256" y1="-1.35" x2="-6.256" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="-6.256" y1="-2.35" x2="-5.856" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="5.744" y1="3.15" x2="6.144" y2="3.15" width="0.2032" layer="51"/>
+<wire x1="6.144" y1="3.15" x2="6.144" y2="2.15" width="0.2032" layer="51"/>
+<wire x1="6.144" y1="2.15" x2="5.744" y2="2.15" width="0.2032" layer="51"/>
+<pad name="1" x="-3.556" y="0" drill="1.2" diameter="2.413" shape="square"/>
+<pad name="2" x="-0.056" y="0" drill="1.2" diameter="2.413"/>
+<pad name="3" x="3.444" y="0" drill="1.2" diameter="2.413"/>
+<text x="-4.826" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-4.826" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
 <package name="1X03_LOCK">
 <wire x1="3.81" y1="0.635" x2="4.445" y2="1.27" width="0.2032" layer="21"/>
@@ -2070,24 +2070,24 @@ Matches 4UCONN part # 11026&lt;br&gt;
 <pad name="2" x="2.54" y="0" drill="1.016" diameter="1.8796"/>
 </package>
 <package name="SCREWTERMINAL-3.5MM-2">
-<wire x1="-1.75" y1="3.4" x2="5.25" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="5.25" y1="3.4" x2="5.25" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="5.25" y1="-2.8" x2="5.25" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="5.25" y1="-3.6" x2="-1.75" y2="-3.6" width="0.2032" layer="21"/>
-<wire x1="-1.75" y1="-3.6" x2="-1.75" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-1.75" y1="-2.8" x2="-1.75" y2="3.4" width="0.2032" layer="21"/>
-<wire x1="5.25" y1="-2.8" x2="-1.75" y2="-2.8" width="0.2032" layer="21"/>
-<wire x1="-1.75" y1="-1.35" x2="-2.15" y2="-1.35" width="0.2032" layer="51"/>
-<wire x1="-2.15" y1="-1.35" x2="-2.15" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="-2.15" y1="-2.35" x2="-1.75" y2="-2.35" width="0.2032" layer="51"/>
-<wire x1="5.25" y1="3.15" x2="5.65" y2="3.15" width="0.2032" layer="51"/>
-<wire x1="5.65" y1="3.15" x2="5.65" y2="2.15" width="0.2032" layer="51"/>
-<wire x1="5.65" y1="2.15" x2="5.25" y2="2.15" width="0.2032" layer="51"/>
-<circle x="2" y="3" radius="0.2828" width="0.127" layer="51"/>
-<pad name="1" x="0" y="0" drill="1.2" diameter="2.032" shape="square"/>
-<pad name="2" x="3.5" y="0" drill="1.2" diameter="2.032"/>
-<text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
-<text x="-1.27" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
+<wire x1="-3.528" y1="3.4" x2="3.472" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="3.472" y1="3.4" x2="3.472" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="3.472" y1="-2.8" x2="3.472" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="3.472" y1="-3.6" x2="-3.528" y2="-3.6" width="0.2032" layer="21"/>
+<wire x1="-3.528" y1="-3.6" x2="-3.528" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-3.528" y1="-2.8" x2="-3.528" y2="3.4" width="0.2032" layer="21"/>
+<wire x1="3.472" y1="-2.8" x2="-3.528" y2="-2.8" width="0.2032" layer="21"/>
+<wire x1="-3.528" y1="-1.35" x2="-3.928" y2="-1.35" width="0.2032" layer="51"/>
+<wire x1="-3.928" y1="-1.35" x2="-3.928" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="-3.928" y1="-2.35" x2="-3.528" y2="-2.35" width="0.2032" layer="51"/>
+<wire x1="3.472" y1="3.15" x2="3.872" y2="3.15" width="0.2032" layer="51"/>
+<wire x1="3.872" y1="3.15" x2="3.872" y2="2.15" width="0.2032" layer="51"/>
+<wire x1="3.872" y1="2.15" x2="3.472" y2="2.15" width="0.2032" layer="51"/>
+<circle x="0.222" y="3" radius="0.2828" width="0.127" layer="51"/>
+<pad name="1" x="-1.778" y="0" drill="1.2" diameter="2.032" shape="square"/>
+<pad name="2" x="1.722" y="0" drill="1.2" diameter="2.032"/>
+<text x="-3.048" y="2.54" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-3.048" y="1.27" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
 <package name="JST-2-SMD">
 <description>2mm SMD side-entry connector. tDocu layer indicates the actual physical plastic housing. +/- indicate SparkFun standard batteries and wiring.</description>
