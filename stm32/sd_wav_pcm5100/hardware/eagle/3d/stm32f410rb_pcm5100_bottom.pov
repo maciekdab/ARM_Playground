@@ -1,6 +1,6 @@
 //POVRay-File created by 3d41.ulp v20110101
 ///home/mtiutiu/Work/ARM_Playground/stm32/sd_wav_pcm5100/hardware/eagle/stm32f410rb_pcm5100.brd
-//4/4/16 6:25 PM
+//4/5/16 10:43 AM
 
 #version 3.5;
 
@@ -98,7 +98,7 @@
 #declare pcb_layer1_used = 1;
 #declare pcb_layer16_used = 1;
 #declare inc_testmode = off;
-#declare global_seed=seed(199);
+#declare global_seed=seed(163);
 #declare global_pcb_layer_dis = array[16]
 {
 	0.000000,
@@ -231,13 +231,14 @@ union{
 #ifndef(pack_C27) #declare global_pack_C27=yes; object {CAP_SMD_CHIP_0805()translate<0,-0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,180> translate<38.608000,-1.500000,39.116000>translate<0,-0.035000,0> }#end		//SMD Capacitor 0805 C27 10uF 0805
 #ifndef(pack_C28) #declare global_pack_C28=yes; object {CAP_SMD_CHIP_0805()translate<0,-0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,180> translate<33.210500,-1.500000,47.053500>translate<0,-0.035000,0> }#end		//SMD Capacitor 0805 C28 2.2nF 0805
 #ifndef(pack_C29) #declare global_pack_C29=yes; object {CAP_SMD_CHIP_0805()translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-180.000000,0> rotate<0,0,180> translate<38.798500,-1.500000,47.053500>translate<0,-0.035000,0> }#end		//SMD Capacitor 0805 C29 2.2nF 0805
-#ifndef(pack_IC1) #declare global_pack_IC1=yes; object {QFP_LQFP_64_050MM("STM32F410","",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<16.764000,-1.500000,32.004000>translate<0,-0.035000,0> }#end		//LQFP-64 IC1 STM32F410 LQFP64
+#ifndef(pack_IC1) #declare global_pack_IC1=yes; object {QFP_LQFP_64_050MM("STM32F410","ST",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<16.764000,-1.500000,32.004000>translate<0,-0.035000,0> }#end		//LQFP-64 IC1 STM32F410 LQFP64
 #ifndef(pack_JP1) #declare global_pack_JP1=yes; object {CON_PH_1X6()translate<0,0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,0> translate<4.127500,0.000000,20.637500>}#end		//Header 2,54mm Grid 6Pin 1Row (jumper.lib) JP1 SWD 1X06
 #ifndef(pack_JP2) #declare global_pack_JP2=yes; object {CON_ARK_350MM_2()translate<0,0,0> rotate<0,0.000000,0>rotate<0,-90.000000,0> rotate<0,0,0> translate<38.709600,0.000000,5.842000>}#end		//connector JP2 Vsupply - 3.3Vcc SCREWTERMINAL-3.5MM-2
 #ifndef(pack_JP3) #declare global_pack_JP3=yes; object {CON_ARK_350MM_4()translate<0,0,0> rotate<0,0.000000,0>rotate<0,-180.000000,0> rotate<0,0,0> translate<11.557000,0.000000,52.705000>}#end		//connector JP3 BTN_1-4 SCREWTERMINAL-3.5MM-4
 #ifndef(pack_JP5) #declare global_pack_JP5=yes; object {CON_ARK_350MM_3()translate<0,0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,0> translate<25.146000,0.000000,6.045200>}#end		//connector JP5 BTN_5-7 SCREWTERMINAL-3.5MM-3
 #ifndef(pack_JP6) #declare global_pack_JP6=yes; object {CON_ARK_350MM_4()translate<0,0,0> rotate<0,0.000000,0>rotate<0,-180.000000,0> rotate<0,0,0> translate<29.997400,0.000000,52.705000>}#end		//connector JP6 AUDIO_OUT SCREWTERMINAL-3.5MM-4
 #ifndef(pack_JP7) #declare global_pack_JP7=yes; object {CON_ARK_350MM_4()translate<0,0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,0> translate<10.210800,0.000000,6.070600>}#end		//connector JP7 BTN_8-11 SCREWTERMINAL-3.5MM-4
+#ifndef(pack_MMC1) #declare global_pack_MMC1=yes; object {MICRO_SD("Amphenol",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<34.163000,-1.500000,18.097500>}#end		// MMC1 Amphenol MICROSD_AMPHENOL
 #ifndef(pack_R1) #declare global_pack_R1=yes; object {RES_SMD_CHIP_0805("220",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<7.620000,-1.500000,27.940000>translate<0,-0.035000,0> }#end		//SMD Resistor 0805 R1 22 0805
 #ifndef(pack_R2) #declare global_pack_R2=yes; object {RES_SMD_CHIP_0805("103",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-180.000000,0> rotate<0,0,180> translate<7.239000,-1.500000,37.274500>translate<0,-0.035000,0> }#end		//SMD Resistor 0805 R2 10K 0805
 #ifndef(pack_R3) #declare global_pack_R3=yes; object {RES_SMD_CHIP_0805("220",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,180> translate<6.832600,-1.500000,15.138400>translate<0,-0.035000,0> }#end		//SMD Resistor 0805 R3 22 0805
@@ -8218,4 +8219,3 @@ rotate pcb_rotdir*180
 
 
 //Parts not found in 3dpack.dat or 3dusrpac.dat are:
-//MMC1	Amphenol	MICROSD_AMPHENOL
