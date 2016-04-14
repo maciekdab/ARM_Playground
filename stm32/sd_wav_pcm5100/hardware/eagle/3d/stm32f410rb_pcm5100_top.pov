@@ -1,6 +1,6 @@
 //POVRay-File created by 3d41.ulp v20110101
 ///home/mtiutiu/Work/ARM_Playground/stm32/sd_wav_pcm5100/hardware/eagle/stm32f410rb_pcm5100.brd
-//4/5/16 10:43 AM
+//4/14/16 12:44 PM
 
 #version 3.5;
 
@@ -98,7 +98,7 @@
 #declare pcb_layer1_used = 1;
 #declare pcb_layer16_used = 1;
 #declare inc_testmode = off;
-#declare global_seed=seed(237);
+#declare global_seed=seed(976);
 #declare global_pcb_layer_dis = array[16]
 {
 	0.000000,
@@ -120,6 +120,7 @@
 }
 #declare global_pcb_real_hole = 2.000000;
 
+#include "e3d_table.inc"
 #include "e3d_tools.inc"
 #include "e3d_user.inc"
 
@@ -238,7 +239,7 @@ union{
 #ifndef(pack_JP5) #declare global_pack_JP5=yes; object {CON_ARK_350MM_3()translate<0,0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,0> translate<25.146000,0.000000,6.045200>}#end		//connector JP5 BTN_5-7 SCREWTERMINAL-3.5MM-3
 #ifndef(pack_JP6) #declare global_pack_JP6=yes; object {CON_ARK_350MM_4()translate<0,0,0> rotate<0,0.000000,0>rotate<0,-180.000000,0> rotate<0,0,0> translate<29.997400,0.000000,52.705000>}#end		//connector JP6 AUDIO_OUT SCREWTERMINAL-3.5MM-4
 #ifndef(pack_JP7) #declare global_pack_JP7=yes; object {CON_ARK_350MM_4()translate<0,0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,0> translate<10.210800,0.000000,6.070600>}#end		//connector JP7 BTN_8-11 SCREWTERMINAL-3.5MM-4
-#ifndef(pack_MMC1) #declare global_pack_MMC1=yes; object {MICRO_SD("Amphenol",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<34.163000,-1.500000,18.097500>}#end		// MMC1 Amphenol MICROSD_AMPHENOL
+#ifndef(pack_MMC1) #declare global_pack_MMC1=yes; object {MICRO_SD("Amphenol",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<34.163000,-1.500000,18.097500>}#end		//Micro SD Card MMC1 Amphenol MICROSD_AMPHENOL
 #ifndef(pack_R1) #declare global_pack_R1=yes; object {RES_SMD_CHIP_0805("220",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-270.000000,0> rotate<0,0,180> translate<7.620000,-1.500000,27.940000>translate<0,-0.035000,0> }#end		//SMD Resistor 0805 R1 22 0805
 #ifndef(pack_R2) #declare global_pack_R2=yes; object {RES_SMD_CHIP_0805("103",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,-180.000000,0> rotate<0,0,180> translate<7.239000,-1.500000,37.274500>translate<0,-0.035000,0> }#end		//SMD Resistor 0805 R2 10K 0805
 #ifndef(pack_R3) #declare global_pack_R3=yes; object {RES_SMD_CHIP_0805("220",)translate<0,-0,0> rotate<0,0.000000,0>rotate<0,0.000000,0> rotate<0,0,180> translate<6.832600,-1.500000,15.138400>translate<0,-0.035000,0> }#end		//SMD Resistor 0805 R3 22 0805
