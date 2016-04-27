@@ -129,7 +129,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, PAM8403_STANDBY_Pin|PCM5100_MUTE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_SET);
 
 }
 

@@ -38,6 +38,29 @@
 #include "gpio.h"
 #include "pff.h"
 
+#define I2S_BUFFER_SIZE						4096
+#define I2S_BUFFER_BYTES_SIZE				I2S_BUFFER_SIZE
+#define I2S_BUFFER_BYTES_SIZE_HALF			(I2S_BUFFER_BYTES_SIZE / 2)
+uint8_t i2s_buffer[I2S_BUFFER_SIZE];
+
+volatile uint8_t wav_file_is_playing = 0;
+
+#define WAV_FILE_HEADER_SIZE	44
+typedef struct {
+	char riff[4];					// should be "RIFF"
+	uint32_t file_size;				// file size in bytes - 8 bytes
+	char type[4];					// should be "WAVE"
+	char fmt[4];
+	uint32_t fmt_len;
+	uint16_t fmt_type;
+	uint16_t channels;				// audio channels
+	uint32_t sample_rate;			// sample rate in Hz
+	uint32_t sr_bit_ch;				// (Sample Rate * Bit Size * Channels) / 8
+	uint16_t bit_ch;				// (Bit Size * Channels) / 8
+	uint16_t bps;					// Bits per sample (Bit Size * Samples)
+	char data[4];					// should be "data"
+	uint32_t data_size;				// total wav raw data size
+} WavHeader_TypeDef;
 
 /** System Clock Configuration
 */
@@ -83,6 +106,100 @@ void SystemClock_Config(void) {
   HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
+void mount_sd_card_fs(FATFS* fs, uint8_t retries) {
+	uint8_t fs_mount_retries = 0;
+
+	// Initialize SD and file system.
+	while (pf_mount(fs)) {
+		if(++fs_mount_retries >= retries) {
+			// TO DO
+			// error mounting sd card
+		}
+		HAL_Delay(10);
+	}
+}
+
+void get_wav_info(char* wav_file, WavHeader_TypeDef* header) {
+	UINT nr;
+	pf_read(header->riff, sizeof(header->riff), &nr);
+	pf_read(&header->file_size, sizeof(header->file_size), &nr);
+	pf_read(header->type, sizeof(header->type), &nr);
+	pf_read(header->fmt, sizeof(header->fmt), &nr);
+	pf_read(&header->fmt_len, sizeof(header->fmt_len), &nr);
+	pf_read(&header->fmt_type, sizeof(header->fmt_type), &nr);
+	pf_read(&header->channels, sizeof(header->channels), &nr);
+	pf_read(&header->sample_rate, sizeof(header->sample_rate), &nr);
+	pf_read(&header->sr_bit_ch, sizeof(header->sr_bit_ch), &nr);
+	pf_read(&header->bit_ch, sizeof(header->bit_ch), &nr);
+	pf_read(&header->bps, sizeof(header->bps), &nr);
+	pf_read(header->data, sizeof(header->data), &nr);
+	pf_read(&header->data_size, sizeof(header->data_size), &nr);
+}
+
+void play_wav_file(char* wav_file) {
+	if (pf_open(wav_file))  {
+		// Failed to open file
+		// TODO
+	}
+
+	WavHeader_TypeDef wav_header;
+	get_wav_info(wav_file, &wav_header);
+
+	UINT nr;
+	pf_lseek(WAV_FILE_HEADER_SIZE); // skip wave file header
+	pf_read((uint8_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE, &nr);
+
+	HAL_I2S_Transmit_DMA(&hi2s1, (uint16_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE / 2);
+
+	// unmute PCM and get power amplifier out of shutdown mode
+	HAL_GPIO_WritePin(GPIOA, PAM8403_STANDBY_Pin|PCM5100_MUTE_Pin, GPIO_PIN_SET);
+
+	wav_file_is_playing = 1;
+}
+
+// stops the current wav file that is playing
+void stop_playing_wav_file(void) {
+	HAL_I2S_DMAStop(&hi2s1);
+	wav_file_is_playing = 0;
+
+	// mute PCM and put audio power amplifier in shutdown mode
+	HAL_GPIO_WritePin(GPIOA, PAM8403_STANDBY_Pin|PCM5100_MUTE_Pin, GPIO_PIN_RESET);
+
+	// Put core mcu into sleep mode
+
+}
+
+// I2S DMA half buffer transfer callback
+void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s) {
+	if(hi2s->Instance == SPI1) {
+		UINT nr;
+		if(pf_read((uint8_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE_HALF, &nr) != FR_OK) {
+			// Failed to read file
+			// TODO
+		}
+
+		// EOF reached
+		if(nr == 0) {
+			stop_playing_wav_file();
+		}
+	}
+}
+
+// I2S DMA full buffer transfer callback
+void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s) {
+	if(hi2s->Instance == SPI1) {
+		UINT nr;
+		if(pf_read(((uint8_t*)i2s_buffer + I2S_BUFFER_BYTES_SIZE_HALF), I2S_BUFFER_BYTES_SIZE_HALF, &nr) != FR_OK) {
+			// Failed to read file
+			// TODO
+		}
+
+		// EOF reached
+		if(nr == 0) {
+			stop_playing_wav_file();
+		}
+	}
+}
 
 int main(void) {
   /* MCU Configuration----------------------------------------------------------*/
@@ -101,10 +218,9 @@ int main(void) {
 
   FATFS fs; // fs object
 
-  // Initialize SD and file system.
-  if (pf_mount(&fs)) {
-  	// error mounting sd card
-  }
+  mount_sd_card_fs(&fs, 10);
+
+  play_wav_file("carousel.wav");
 
   for (;;) {
 
