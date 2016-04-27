@@ -152,7 +152,8 @@ void play_wav_file(char* wav_file) {
 	HAL_I2S_Transmit_DMA(&hi2s1, (uint16_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE / 2);
 
 	// unmute PCM and get power amplifier out of shutdown mode
-	HAL_GPIO_WritePin(GPIOA, PAM8403_STANDBY_Pin|PCM5100_MUTE_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(PAM8403_STANDBY_GPIO_Port, PAM8403_STANDBY_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(PCM5100_MUTE_GPIO_Port, PCM5100_MUTE_Pin, GPIO_PIN_SET);
 
 	wav_file_is_playing = 1;
 }
@@ -163,7 +164,8 @@ void stop_playing_wav_file(void) {
 	wav_file_is_playing = 0;
 
 	// mute PCM and put audio power amplifier in shutdown mode
-	HAL_GPIO_WritePin(GPIOA, PAM8403_STANDBY_Pin|PCM5100_MUTE_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(PAM8403_STANDBY_GPIO_Port, PAM8403_STANDBY_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(PCM5100_MUTE_GPIO_Port, PCM5100_MUTE_Pin, GPIO_PIN_RESET);
 
 	// Put core mcu into sleep mode
 
