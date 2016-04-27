@@ -202,7 +202,7 @@ void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s) {
 }
 
 int main(void) {
-  /* MCU Configuration----------------------------------------------------------*/
+   /* MCU Configuration----------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
