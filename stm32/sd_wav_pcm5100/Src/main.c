@@ -222,24 +222,21 @@ int main(void) {
 
 	mount_sd_card_fs(&fs, 10);
 
-//	char* sounds_list[] = {
-//			"intro.wav",
-//			"party.wav",
-//			"castle.wav",
-//			"carousel.wav",
-//			"dog.wav",
-//			"cat.wav",
-//			"sheep.wav",
-//			"frog.wav",
-//			"cow.wav",
-//			"dolphin.wav",
-//			"seal.wav",
-//			"whale.wav"
-//	};
-
 	char* sounds_list[] = {
+			"intro.wav",
+			"party.wav",
+			"castle.wav",
 			"carousel.wav",
-			"castle.wav"
+			"child1.wav",
+			"child2.wav",
+			"dog.wav",
+			"cat.wav",
+			"sheep.wav",
+			"frog.wav",
+			"cow.wav",
+			"dolphin.wav",
+			"seal.wav",
+			"whale.wav"
 	};
 
 	for (;;) {
