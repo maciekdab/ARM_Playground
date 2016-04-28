@@ -4169,11 +4169,11 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <label x="129.794" y="147.066" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="132.842" y1="56.642" x2="134.366" y2="56.642" width="0.1524" layer="91"/>
-<wire x1="134.366" y1="56.642" x2="134.366" y2="50.038" width="0.1524" layer="91"/>
-<wire x1="134.366" y1="50.038" x2="138.43" y2="50.038" width="0.1524" layer="91"/>
-<label x="138.43" y="50.038" size="1.778" layer="95" xref="yes"/>
-<pinref part="IC1" gate="G$1" pin="PB14"/>
+<wire x1="132.842" y1="59.182" x2="135.89" y2="59.182" width="0.1524" layer="91"/>
+<wire x1="135.89" y1="59.182" x2="135.89" y2="54.356" width="0.1524" layer="91"/>
+<wire x1="135.89" y1="54.356" x2="138.176" y2="54.356" width="0.1524" layer="91"/>
+<label x="138.176" y="54.356" size="1.778" layer="95" xref="yes"/>
+<pinref part="IC1" gate="G$1" pin="PB15"/>
 </segment>
 </net>
 <net name="SD_DO" class="0">
@@ -4183,11 +4183,11 @@ Source: www.ti.com/.. slvs087l.pdf</description>
 <label x="129.794" y="136.906" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="132.842" y1="59.182" x2="135.89" y2="59.182" width="0.1524" layer="91"/>
-<wire x1="135.89" y1="59.182" x2="135.89" y2="54.356" width="0.1524" layer="91"/>
-<wire x1="135.89" y1="54.356" x2="138.176" y2="54.356" width="0.1524" layer="91"/>
-<label x="138.176" y="54.356" size="1.778" layer="95" xref="yes"/>
-<pinref part="IC1" gate="G$1" pin="PB15"/>
+<wire x1="132.842" y1="56.642" x2="134.366" y2="56.642" width="0.1524" layer="91"/>
+<wire x1="134.366" y1="56.642" x2="134.366" y2="50.038" width="0.1524" layer="91"/>
+<wire x1="134.366" y1="50.038" x2="138.43" y2="50.038" width="0.1524" layer="91"/>
+<label x="138.43" y="50.038" size="1.778" layer="95" xref="yes"/>
+<pinref part="IC1" gate="G$1" pin="PB14"/>
 </segment>
 </net>
 <net name="SD_SCLK" class="0">
