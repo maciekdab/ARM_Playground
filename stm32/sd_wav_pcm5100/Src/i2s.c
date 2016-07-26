@@ -58,15 +58,18 @@ void MX_I2S1_Init(void)
   hi2s1.Init.CPOL = I2S_CPOL_LOW;
   hi2s1.Init.ClockSource = I2S_CLOCK_PLLR;
   hi2s1.Init.FullDuplexMode = I2S_FULLDUPLEXMODE_DISABLE;
-  HAL_I2S_Init(&hi2s1);
+  if (HAL_I2S_Init(&hi2s1) != HAL_OK)
+  {
+    Error_Handler();
+  }
 
 }
 
-void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
+void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct;
-  if(hi2s->Instance==SPI1)
+  if(i2sHandle->Instance==SPI1)
   {
   /* USER CODE BEGIN SPI1_MspInit 0 */
 
@@ -106,9 +109,12 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
     hdma_spi1_tx.Init.Mode = DMA_CIRCULAR;
     hdma_spi1_tx.Init.Priority = DMA_PRIORITY_MEDIUM;
     hdma_spi1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
-    HAL_DMA_Init(&hdma_spi1_tx);
+    if (HAL_DMA_Init(&hdma_spi1_tx) != HAL_OK)
+    {
+      Error_Handler();
+    }
 
-    __HAL_LINKDMA(hi2s,hdmatx,hdma_spi1_tx);
+    __HAL_LINKDMA(i2sHandle,hdmatx,hdma_spi1_tx);
 
   /* USER CODE BEGIN SPI1_MspInit 1 */
 
@@ -116,10 +122,10 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* hi2s)
   }
 }
 
-void HAL_I2S_MspDeInit(I2S_HandleTypeDef* hi2s)
+void HAL_I2S_MspDeInit(I2S_HandleTypeDef* i2sHandle)
 {
 
-  if(hi2s->Instance==SPI1)
+  if(i2sHandle->Instance==SPI1)
   {
   /* USER CODE BEGIN SPI1_MspDeInit 0 */
 
@@ -138,7 +144,7 @@ void HAL_I2S_MspDeInit(I2S_HandleTypeDef* hi2s)
     HAL_GPIO_DeInit(I2S_MCLK_GPIO_Port, I2S_MCLK_Pin);
 
     /* Peripheral DMA DeInit*/
-    HAL_DMA_DeInit(hi2s->hdmatx);
+    HAL_DMA_DeInit(i2sHandle->hdmatx);
   }
   /* USER CODE BEGIN SPI1_MspDeInit 1 */
 

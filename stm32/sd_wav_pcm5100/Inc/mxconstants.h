@@ -30,7 +30,10 @@
   *
   ******************************************************************************
   */
-/* Includes ------------------------------------------------------------------*/
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __MXCONSTANT_H
+#define __MXCONSTANT_H
+  /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
 
@@ -60,10 +63,10 @@
 #define I2S_MCLK_GPIO_Port GPIOB
 #define SD_SCLK_Pin GPIO_PIN_13
 #define SD_SCLK_GPIO_Port GPIOB
-#define SD_DI_Pin GPIO_PIN_15
-#define SD_DI_GPIO_Port GPIOB
 #define SD_DO_Pin GPIO_PIN_14
 #define SD_DO_GPIO_Port GPIOB
+#define SD_DI_Pin GPIO_PIN_15
+#define SD_DI_GPIO_Port GPIOB
 #define BTN_5_Pin GPIO_PIN_6
 #define BTN_5_GPIO_Port GPIOC
 #define BTN_6_Pin GPIO_PIN_7
@@ -98,4 +101,5 @@
   * @}
 */ 
 
+#endif /* __MXCONSTANT_H */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

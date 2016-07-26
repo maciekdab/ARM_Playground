@@ -62,6 +62,7 @@ typedef struct {
 	uint32_t data_size;				// total wav raw data size
 } WavHeader_TypeDef;
 
+
 /** System Clock Configuration
  */
 void SystemClock_Config(void) {
@@ -84,7 +85,9 @@ void SystemClock_Config(void) {
 	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
 	RCC_OscInitStruct.PLL.PLLQ = 4;
 	RCC_OscInitStruct.PLL.PLLR = 2;
-	HAL_RCC_OscConfig(&RCC_OscInitStruct);
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+		Error_Handler();
+	}
 
 	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
 			|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -92,11 +95,15 @@ void SystemClock_Config(void) {
 	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
 	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
 	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-	HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3);
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK) {
+		Error_Handler();
+	}
 
 	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2S;
 	PeriphClkInitStruct.I2SClockSelection = RCC_I2SAPBCLKSOURCE_PLLR;
-	HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct);
+	if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
+		Error_Handler();
+	}
 
 	HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
@@ -104,6 +111,18 @@ void SystemClock_Config(void) {
 
 	/* SysTick_IRQn interrupt configuration */
 	HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+}
+
+/**
+ * @brief  This function is executed in case of error occurrence.
+ * @param  None
+ * @retval None
+ */
+void Error_Handler(void) {
+	/* User can add his own implementation to report the HAL error return state */
+	while(1) {
+	}
+
 }
 
 void mount_sd_card_fs(FATFS* fs, uint8_t retries) {
@@ -247,6 +266,7 @@ int main(void) {
 
 	}
 
+
 }
 
 
@@ -268,13 +288,5 @@ void assert_failed(uint8_t* file, uint32_t line) {
 }
 
 #endif
-
-/**
- * @}
- */
-
-/**
- * @}
- */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

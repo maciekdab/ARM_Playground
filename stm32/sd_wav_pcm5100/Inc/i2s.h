@@ -51,6 +51,8 @@ extern I2S_HandleTypeDef hi2s1;
 
 /* USER CODE END Private defines */
 
+extern void Error_Handler(void);
+
 void MX_I2S1_Init(void);
 
 /* USER CODE BEGIN Prototypes */

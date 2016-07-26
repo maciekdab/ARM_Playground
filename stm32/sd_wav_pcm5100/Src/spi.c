@@ -59,15 +59,18 @@ void MX_SPI2_Init(void)
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
   hspi2.Init.CRCPolynomial = 15;
-  HAL_SPI_Init(&hspi2);
+  if (HAL_SPI_Init(&hspi2) != HAL_OK)
+  {
+    Error_Handler();
+  }
 
 }
 
-void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
+void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct;
-  if(hspi->Instance==SPI2)
+  if(spiHandle->Instance==SPI2)
   {
   /* USER CODE BEGIN SPI2_MspInit 0 */
 
@@ -80,19 +83,19 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     PB14     ------> SPI2_MISO
     PB15     ------> SPI2_MOSI 
     */
-    GPIO_InitStruct.Pin = SD_SCLK_Pin|SD_DI_Pin;
+    GPIO_InitStruct.Pin = SD_SCLK_Pin|SD_DO_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = SD_DO_Pin;
+    GPIO_InitStruct.Pin = SD_DI_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
-    HAL_GPIO_Init(SD_DO_GPIO_Port, &GPIO_InitStruct);
+    HAL_GPIO_Init(SD_DI_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN SPI2_MspInit 1 */
 
@@ -100,10 +103,10 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
   }
 }
 
-void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
+void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
 {
 
-  if(hspi->Instance==SPI2)
+  if(spiHandle->Instance==SPI2)
   {
   /* USER CODE BEGIN SPI2_MspDeInit 0 */
 
@@ -116,7 +119,7 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     PB14     ------> SPI2_MISO
     PB15     ------> SPI2_MOSI 
     */
-    HAL_GPIO_DeInit(GPIOB, SD_SCLK_Pin|SD_DI_Pin|SD_DO_Pin);
+    HAL_GPIO_DeInit(GPIOB, SD_SCLK_Pin|SD_DO_Pin|SD_DI_Pin);
 
   }
   /* USER CODE BEGIN SPI2_MspDeInit 1 */
