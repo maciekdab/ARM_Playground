@@ -222,6 +222,11 @@ void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s) {
 	}
 }
 
+// handle keys
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+
+}
+
 int main(void) {
 	/* MCU Configuration----------------------------------------------------------*/
 
