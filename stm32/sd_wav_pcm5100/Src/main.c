@@ -31,6 +31,7 @@
  ******************************************************************************
  */
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
 #include "stm32f4xx_hal.h"
 #include "dma.h"
 #include "i2s.h"
@@ -38,43 +39,46 @@
 #include "gpio.h"
 #include "pff.h"
 
-#define I2S_BUFFER_SIZE						8192
-#define I2S_BUFFER_BYTES_SIZE				I2S_BUFFER_SIZE
-#define I2S_BUFFER_BYTES_SIZE_HALF			(I2S_BUFFER_BYTES_SIZE / 2)
+#define I2S_BUFFER_SIZE                     8192
+#define I2S_BUFFER_BYTES_SIZE               I2S_BUFFER_SIZE
+#define I2S_BUFFER_BYTES_SIZE_HALF          (I2S_BUFFER_BYTES_SIZE / 2)
 uint8_t i2s_buffer[I2S_BUFFER_SIZE];
 
 volatile uint8_t wav_file_is_playing = 0;
 
-#define WAV_FILE_HEADER_SIZE	44
+#define WAV_FILE_HEADER_SIZE    44
 typedef struct {
-	char riff[4];					// should be "RIFF"
-	uint32_t file_size;				// file size in bytes - 8 bytes
-	char type[4];					// should be "WAVE"
+	char riff[4];               // should be "RIFF"
+	uint32_t file_size;         // file size in bytes - 8 bytes
+	char type[4];               // should be "WAVE"
 	char fmt[4];
 	uint32_t fmt_len;
 	uint16_t fmt_type;
-	uint16_t channels;				// audio channels
-	uint32_t sample_rate;			// sample rate in Hz
-	uint32_t sr_bit_ch;				// (Sample Rate * Bit Size * Channels) / 8
-	uint16_t bit_ch;				// (Bit Size * Channels) / 8
-	uint16_t bps;					// Bits per sample (Bit Size * Samples)
-	char data[4];					// should be "data"
-	uint32_t data_size;				// total wav raw data size
+	uint16_t channels;          // audio channels
+	uint32_t sample_rate;       // sample rate in Hz
+	uint32_t sr_bit_ch;         // (Sample Rate * Bit Size * Channels) / 8
+	uint16_t bit_ch;            // (Bit Size * Channels) / 8
+	uint16_t bps;               // Bits per sample (Bit Size * Samples)
+	char data[4];               // should be "data"
+	uint32_t data_size;         // total wav raw data size
 } WavHeader_TypeDef;
 
 
 /** System Clock Configuration
  */
 void SystemClock_Config(void) {
-
 	RCC_OscInitTypeDef RCC_OscInitStruct;
 	RCC_ClkInitTypeDef RCC_ClkInitStruct;
 	RCC_PeriphCLKInitTypeDef PeriphClkInitStruct;
 
+	/**Configure the main internal regulator output voltage
+	 */
 	__HAL_RCC_PWR_CLK_ENABLE();
 
 	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
+	/**Initializes the CPU, AHB and APB busses clocks
+	 */
 	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
 	RCC_OscInitStruct.HSIState = RCC_HSI_ON;
 	RCC_OscInitStruct.HSICalibrationValue = 16;
@@ -89,12 +93,15 @@ void SystemClock_Config(void) {
 		Error_Handler();
 	}
 
+	/**Initializes the CPU, AHB and APB busses clocks
+	 */
 	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
 			|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
 	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
 	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
 	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
 	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+
 	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK) {
 		Error_Handler();
 	}
@@ -105,8 +112,12 @@ void SystemClock_Config(void) {
 		Error_Handler();
 	}
 
+	/**Configure the Systick interrupt time
+	 */
 	HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
+	/**Configure the Systick
+	 */
 	HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
 	/* SysTick_IRQn interrupt configuration */
@@ -122,7 +133,6 @@ void Error_Handler(void) {
 	/* User can add his own implementation to report the HAL error return state */
 	while(1) {
 	}
-
 }
 
 void mount_sd_card_fs(FATFS* fs, uint8_t retries) {
@@ -263,10 +273,10 @@ int main(void) {
 			"whale.wav"
 	};
 
-	for (;;) {
+	for (;; ) {
 		for(uint8_t i = 0; i < (sizeof(sounds_list) / sizeof(char*)); ++i) {
 			play_wav_file(sounds_list[i]);
-			while(wav_file_is_playing); // wait until current song finishes playing
+			while(wav_file_is_playing) ;  // wait until current song finishes playing
 		}
 
 	}
@@ -287,7 +297,7 @@ int main(void) {
 void assert_failed(uint8_t* file, uint32_t line) {
 	/* USER CODE BEGIN 6 */
 	/* User can add his own implementation to report the file name and line number,
-    ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+           ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
 	/* USER CODE END 6 */
 
 }
