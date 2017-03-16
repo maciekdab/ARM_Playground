@@ -63,65 +63,64 @@ typedef struct {
 	uint32_t data_size;         // total wav raw data size
 } WavHeader_TypeDef;
 
-
 /** System Clock Configuration
  */
 void SystemClock_Config(void) {
-  RCC_OscInitTypeDef RCC_OscInitStruct;
-  RCC_ClkInitTypeDef RCC_ClkInitStruct;
-  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct;
+	RCC_OscInitTypeDef RCC_OscInitStruct;
+	RCC_ClkInitTypeDef RCC_ClkInitStruct;
+	RCC_PeriphCLKInitTypeDef PeriphClkInitStruct;
 
-    /**Configure the main internal regulator output voltage 
-    */
-  __HAL_RCC_PWR_CLK_ENABLE();
+	/**Configure the main internal regulator output voltage
+	 */
+	__HAL_RCC_PWR_CLK_ENABLE();
 
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-    /**Initializes the CPU, AHB and APB busses clocks 
-    */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 100;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
-  RCC_OscInitStruct.PLL.PLLR = 2;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-    Error_Handler();
-  }
+	/**Initializes the CPU, AHB and APB busses clocks
+	 */
+	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+	RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+	RCC_OscInitStruct.HSICalibrationValue = 16;
+	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+	RCC_OscInitStruct.PLL.PLLM = 8;
+	RCC_OscInitStruct.PLL.PLLN = 100;
+	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+	RCC_OscInitStruct.PLL.PLLQ = 4;
+	RCC_OscInitStruct.PLL.PLLR = 2;
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+		Error_Handler();
+	}
 
-    /**Initializes the CPU, AHB and APB busses clocks 
-    */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+	/**Initializes the CPU, AHB and APB busses clocks
+	 */
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+			| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK) {
-    Error_Handler();
-  }
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK) {
+		Error_Handler();
+	}
 
-  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2S;
-  PeriphClkInitStruct.I2SClockSelection = RCC_I2SAPBCLKSOURCE_PLLR;
-  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
-    Error_Handler();
-  }
+	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2S;
+	PeriphClkInitStruct.I2SClockSelection = RCC_I2SAPBCLKSOURCE_PLLR;
+	if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK) {
+		Error_Handler();
+	}
 
-    /**Configure the Systick interrupt time 
-    */
-  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+	/**Configure the Systick interrupt time
+	 */
+	HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 1000);
 
-    /**Configure the Systick 
-    */
-  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+	/**Configure the Systick
+	 */
+	HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
-  /* SysTick_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+	/* SysTick_IRQn interrupt configuration */
+	HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
 /**
@@ -131,7 +130,7 @@ void SystemClock_Config(void) {
  */
 void Error_Handler(void) {
 	/* User can add his own implementation to report the HAL error return state */
-	while(1) {
+	while (1) {
 	}
 }
 
@@ -140,7 +139,7 @@ void mount_sd_card_fs(FATFS* fs, uint8_t retries) {
 
 	// Initialize SD and file system.
 	while (pf_mount(fs)) {
-		if(++fs_mount_retries >= retries) {
+		if (++fs_mount_retries >= retries) {
 			// TO DO
 			// error mounting sd card
 		}
@@ -166,7 +165,7 @@ void get_wav_info(char* wav_file, WavHeader_TypeDef* header) {
 }
 
 void play_wav_file(char* wav_file) {
-	if (pf_open(wav_file))  {
+	if (pf_open(wav_file)) {
 		// Failed to open file
 		// TODO
 	}
@@ -176,12 +175,14 @@ void play_wav_file(char* wav_file) {
 
 	UINT nr;
 	pf_lseek(WAV_FILE_HEADER_SIZE); // skip wave file header
-	pf_read((uint8_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE, &nr);
+	pf_read((uint8_t*) i2s_buffer, I2S_BUFFER_BYTES_SIZE, &nr);
 
-	HAL_I2S_Transmit_DMA(&hi2s1, (uint16_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE / 2);
+	HAL_I2S_Transmit_DMA(&hi2s1, (uint16_t*) i2s_buffer,
+			I2S_BUFFER_BYTES_SIZE / 2);
 
 	// unmute PCM and get power amplifier out of shutdown mode
-	HAL_GPIO_WritePin(PAM8403_STANDBY_GPIO_Port, PAM8403_STANDBY_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(PAM8403_STANDBY_GPIO_Port, PAM8403_STANDBY_Pin,
+			GPIO_PIN_SET);
 	HAL_GPIO_WritePin(PCM5100_MUTE_GPIO_Port, PCM5100_MUTE_Pin, GPIO_PIN_SET);
 
 	wav_file_is_playing = 1;
@@ -193,7 +194,8 @@ void stop_playing_wav_file(void) {
 	wav_file_is_playing = 0;
 
 	// mute PCM and put audio power amplifier in shutdown mode
-	HAL_GPIO_WritePin(PAM8403_STANDBY_GPIO_Port, PAM8403_STANDBY_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(PAM8403_STANDBY_GPIO_Port, PAM8403_STANDBY_Pin,
+			GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(PCM5100_MUTE_GPIO_Port, PCM5100_MUTE_Pin, GPIO_PIN_RESET);
 
 	// Put core mcu into sleep mode
@@ -202,15 +204,16 @@ void stop_playing_wav_file(void) {
 
 // I2S DMA half buffer transfer callback
 void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s) {
-	if(hi2s->Instance == SPI1) {
+	if (hi2s->Instance == SPI1) {
 		UINT nr;
-		if(pf_read((uint8_t*)i2s_buffer, I2S_BUFFER_BYTES_SIZE_HALF, &nr) != FR_OK) {
+		if (pf_read((uint8_t*) i2s_buffer, I2S_BUFFER_BYTES_SIZE_HALF, &nr)
+				!= FR_OK) {
 			// Failed to read file
 			// TODO
 		}
 
 		// EOF reached
-		if(nr == 0) {
+		if (nr == 0) {
 			stop_playing_wav_file();
 		}
 	}
@@ -218,15 +221,16 @@ void HAL_I2S_TxHalfCpltCallback(I2S_HandleTypeDef *hi2s) {
 
 // I2S DMA full buffer transfer callback
 void HAL_I2S_TxCpltCallback(I2S_HandleTypeDef *hi2s) {
-	if(hi2s->Instance == SPI1) {
+	if (hi2s->Instance == SPI1) {
 		UINT nr;
-		if(pf_read(((uint8_t*)i2s_buffer + I2S_BUFFER_BYTES_SIZE_HALF), I2S_BUFFER_BYTES_SIZE_HALF, &nr) != FR_OK) {
+		if (pf_read(((uint8_t*) i2s_buffer + I2S_BUFFER_BYTES_SIZE_HALF),
+				I2S_BUFFER_BYTES_SIZE_HALF, &nr) != FR_OK) {
 			// Failed to read file
 			// TODO
 		}
 
 		// EOF reached
-		if(nr == 0) {
+		if (nr == 0) {
 			stop_playing_wav_file();
 		}
 	}
@@ -240,50 +244,37 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 int main(void) {
 	/* MCU Configuration----------------------------------------------------------*/
 
-    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-    HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-    /* Configure the system clock */
-    SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-    /* Initialize all configured peripherals */
-    MX_GPIO_Init();
-    MX_DMA_Init();
-    MX_I2S1_Init();
-    MX_SPI2_Init();
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_DMA_Init();
+	MX_I2S1_Init();
+	MX_SPI2_Init();
 
 	FATFS fs; // fs object
 
 	mount_sd_card_fs(&fs, 10);
 
-	char* sounds_list[] = {
-			"intro.wav",
-			"party.wav",
-			"castle.wav",
-			"carousel.wav",
-			"child1.wav",
-			"child2.wav",
-			"dog.wav",
-			"cat.wav",
-			"sheep.wav",
-			"frog.wav",
-			"cow.wav",
-			"dolphin.wav",
-			"seal.wav",
-			"whale.wav"
-	};
+	char* sounds_list[] = { "intro.wav", "party.wav", "castle.wav",
+			"carousel.wav", "child1.wav", "child2.wav", "dog.wav", "cat.wav",
+			"sheep.wav", "frog.wav", "cow.wav", "dolphin.wav", "seal.wav",
+			"whale.wav" };
 
-	for (;; ) {
-		for(uint8_t i = 0; i < (sizeof(sounds_list) / sizeof(char*)); ++i) {
+	for (;;) {
+		for (uint8_t i = 0; i < (sizeof(sounds_list) / sizeof(char*)); ++i) {
 			play_wav_file(sounds_list[i]);
-			while(wav_file_is_playing) ;  // wait until current song finishes playing
+			while (wav_file_is_playing)
+				;  // wait until current song finishes playing
 		}
 
 	}
 
-
 }
-
 
 #ifdef USE_FULL_ASSERT
 
@@ -297,7 +288,7 @@ int main(void) {
 void assert_failed(uint8_t* file, uint32_t line) {
 	/* USER CODE BEGIN 6 */
 	/* User can add his own implementation to report the file name and line number,
-           ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+	 ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
 	/* USER CODE END 6 */
 
 }
