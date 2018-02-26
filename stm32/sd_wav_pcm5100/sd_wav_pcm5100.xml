@@ -4,7 +4,7 @@
     <name>sd_wav_pcm5100</name>
     <mcuId>stm32f410rbtx</mcuId>
     <dbgIF>SWD</dbgIF>
-    <dbgDEV>ST-LinkV2</dbgDEV>
     <dbgDEV>ST-LinkV2-1</dbgDEV>
+    <dbgDEV>ST-LinkV2</dbgDEV>
   </board>
 </targetDefinitions>

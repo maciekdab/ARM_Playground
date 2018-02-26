@@ -1,10 +1,16 @@
 /**
   ******************************************************************************
-  * File Name          : main.h
-  * Description        : This file contains the common defines of the application
+  * @file           : main.h
+  * @brief          : Header for main.c file.
+  *                   This file contains the common defines of the application.
   ******************************************************************************
+  ** This notice applies to any and all portions of this file
+  * that are not between comment pairs USER CODE BEGIN and
+  * USER CODE END. Other portions of this file, whether 
+  * inserted by the user or by software development tools
+  * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -30,10 +36,12 @@
   *
   ******************************************************************************
   */
+
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
-  /* Includes ------------------------------------------------------------------*/
+#ifndef __MAIN_H__
+#define __MAIN_H__
+
+/* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
 
@@ -43,12 +51,16 @@
 
 #define BTN_1_Pin GPIO_PIN_0
 #define BTN_1_GPIO_Port GPIOC
+#define BTN_1_EXTI_IRQn EXTI0_IRQn
 #define BTN_2_Pin GPIO_PIN_1
 #define BTN_2_GPIO_Port GPIOC
+#define BTN_2_EXTI_IRQn EXTI1_IRQn
 #define BTN_3_Pin GPIO_PIN_2
 #define BTN_3_GPIO_Port GPIOC
+#define BTN_3_EXTI_IRQn EXTI2_IRQn
 #define BTN_4_Pin GPIO_PIN_3
 #define BTN_4_GPIO_Port GPIOC
+#define BTN_4_EXTI_IRQn EXTI3_IRQn
 #define PAM8403_MUTE_Pin GPIO_PIN_1
 #define PAM8403_MUTE_GPIO_Port GPIOA
 #define PAM8403_STANDBY_Pin GPIO_PIN_2
@@ -71,20 +83,27 @@
 #define SD_DI_GPIO_Port GPIOB
 #define BTN_5_Pin GPIO_PIN_6
 #define BTN_5_GPIO_Port GPIOC
+#define BTN_5_EXTI_IRQn EXTI9_5_IRQn
 #define BTN_6_Pin GPIO_PIN_7
 #define BTN_6_GPIO_Port GPIOC
+#define BTN_6_EXTI_IRQn EXTI9_5_IRQn
 #define BTN_7_Pin GPIO_PIN_8
 #define BTN_7_GPIO_Port GPIOC
+#define BTN_7_EXTI_IRQn EXTI9_5_IRQn
 #define SD_CS_Pin GPIO_PIN_9
 #define SD_CS_GPIO_Port GPIOC
 #define BTN_8_Pin GPIO_PIN_9
 #define BTN_8_GPIO_Port GPIOA
+#define BTN_8_EXTI_IRQn EXTI9_5_IRQn
 #define BTN_9_Pin GPIO_PIN_10
 #define BTN_9_GPIO_Port GPIOA
+#define BTN_9_EXTI_IRQn EXTI15_10_IRQn
 #define BTN_10_Pin GPIO_PIN_11
 #define BTN_10_GPIO_Port GPIOA
+#define BTN_10_EXTI_IRQn EXTI15_10_IRQn
 #define BTN_11_Pin GPIO_PIN_12
 #define BTN_11_GPIO_Port GPIOA
+#define BTN_11_EXTI_IRQn EXTI15_10_IRQn
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
@@ -92,17 +111,27 @@
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
 
+/* ########################## Assert Selection ############################## */
+/**
+  * @brief Uncomment the line below to expanse the "assert_param" macro in the 
+  *        HAL drivers code
+  */
+/* #define USE_FULL_ASSERT    1U */
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-/**
-  * @}
-  */ 
+#ifdef __cplusplus
+ extern "C" {
+#endif
+void _Error_Handler(char *, int);
 
-/**
-  * @}
-*/ 
+#define Error_Handler() _Error_Handler(__FILE__, __LINE__)
+#ifdef __cplusplus
+}
+#endif
 
-#endif /* __MAIN_H */
+#endif /* __MAIN_H__ */
+
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

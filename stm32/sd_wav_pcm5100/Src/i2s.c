@@ -4,8 +4,13 @@
   * Description        : This file provides code for the configuration
   *                      of the I2S instances.
   ******************************************************************************
+  ** This notice applies to any and all portions of this file
+  * that are not between comment pairs USER CODE BEGIN and
+  * USER CODE END. Other portions of this file, whether 
+  * inserted by the user or by software development tools
+  * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2017 STMicroelectronics
+  * COPYRIGHT(c) 2018 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -60,7 +65,7 @@ void MX_I2S1_Init(void)
   hi2s1.Init.FullDuplexMode = I2S_FULLDUPLEXMODE_DISABLE;
   if (HAL_I2S_Init(&hi2s1) != HAL_OK)
   {
-    Error_Handler();
+    _Error_Handler(__FILE__, __LINE__);
   }
 
 }
@@ -74,7 +79,7 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
   /* USER CODE BEGIN SPI1_MspInit 0 */
 
   /* USER CODE END SPI1_MspInit 0 */
-    /* Peripheral clock enable */
+    /* I2S1 clock enable */
     __HAL_RCC_SPI1_CLK_ENABLE();
   
     /**I2S1 GPIO Configuration    
@@ -97,8 +102,8 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
     GPIO_InitStruct.Alternate = GPIO_AF6_SPI1;
     HAL_GPIO_Init(I2S_MCLK_GPIO_Port, &GPIO_InitStruct);
 
-    /* Peripheral DMA init*/
-  
+    /* I2S1 DMA Init */
+    /* SPI1_TX Init */
     hdma_spi1_tx.Instance = DMA2_Stream2;
     hdma_spi1_tx.Init.Channel = DMA_CHANNEL_2;
     hdma_spi1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
@@ -111,7 +116,7 @@ void HAL_I2S_MspInit(I2S_HandleTypeDef* i2sHandle)
     hdma_spi1_tx.Init.FIFOMode = DMA_FIFOMODE_DISABLE;
     if (HAL_DMA_Init(&hdma_spi1_tx) != HAL_OK)
     {
-      Error_Handler();
+      _Error_Handler(__FILE__, __LINE__);
     }
 
     __HAL_LINKDMA(i2sHandle,hdmatx,hdma_spi1_tx);
@@ -143,12 +148,12 @@ void HAL_I2S_MspDeInit(I2S_HandleTypeDef* i2sHandle)
 
     HAL_GPIO_DeInit(I2S_MCLK_GPIO_Port, I2S_MCLK_Pin);
 
-    /* Peripheral DMA DeInit*/
+    /* I2S1 DMA DeInit */
     HAL_DMA_DeInit(i2sHandle->hdmatx);
-  }
   /* USER CODE BEGIN SPI1_MspDeInit 1 */
 
   /* USER CODE END SPI1_MspDeInit 1 */
+  }
 } 
 
 /* USER CODE BEGIN 1 */
