@@ -6,7 +6,7 @@
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
+  * USER CODE END. Other portions of this file, whether
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
@@ -89,7 +89,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-  
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -97,6 +97,8 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+  // 1 -> 1,5ms <=> 0 -> 90 degrees
+  //__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -108,11 +110,16 @@ int main(void)
 
   /* USER CODE BEGIN 3 */
   // update pwm duty at runtime
-  for (uint16_t i = 0; i < 50; i++) {
+  for (uint16_t i = 1; i < 40; i++) {
     __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, i);
-    HAL_Delay(1000);
+    HAL_Delay(30);
   }
-  
+
+  for (uint16_t i = 39; i > 1; i--) {
+    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, i);
+    HAL_Delay(20);
+  }
+
   }
   /* USER CODE END 3 */
 
@@ -128,7 +135,7 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
@@ -142,7 +149,7 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -156,11 +163,11 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure the Systick interrupt time 
+    /**Configure the Systick interrupt time
     */
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
-    /**Configure the Systick 
+    /**Configure the Systick
     */
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
@@ -197,7 +204,7 @@ void _Error_Handler(char *file, int line)
   * @retval None
   */
 void assert_failed(uint8_t* file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
