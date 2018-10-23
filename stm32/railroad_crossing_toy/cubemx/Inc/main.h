@@ -49,8 +49,12 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define Servo_PWM_Output_Pin GPIO_PIN_9
-#define Servo_PWM_Output_GPIO_Port GPIOA
+#define Right_Led_Pin GPIO_PIN_0
+#define Right_Led_GPIO_Port GPIOA
+#define Left_Led_Pin GPIO_PIN_1
+#define Left_Led_GPIO_Port GPIOA
+#define Servo_PWM_Out_Pin GPIO_PIN_6
+#define Servo_PWM_Out_GPIO_Port GPIOA
 
 /* ########################## Assert Selection ############################## */
 /**

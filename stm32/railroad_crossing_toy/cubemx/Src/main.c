@@ -6,7 +6,7 @@
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether
+  * USER CODE END. Other portions of this file, whether 
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
@@ -43,14 +43,24 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "bell.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+#define UP        0
+#define DOWN      1
+#define GO_UP     -1
+#define GO_DOWN    1
+#define ANGLE_PWM_COMPARE_MIN                   90
+#define BARRIER_START_ANGLE                      0
+#define BARRIER_STOP_ANGLE                      90
+#define BARRIER_ANGLE_STEP_INTERVAL_MS         40UL
+uint8_t barrier_state = UP;
 
+#define LIGHTS_TOGGLE_INTERVAL_MS 1000UL
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -58,6 +68,37 @@ void SystemClock_Config(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
+
+void Run_Lights(void) {
+  static uint32_t last_tick = 0;
+  
+  if ((HAL_GetTick() - last_tick) >= LIGHTS_TOGGLE_INTERVAL_MS) {
+    HAL_GPIO_TogglePin(GPIOA, Right_Led_Pin);
+    HAL_GPIO_WritePin(GPIOA, Left_Led_Pin, !HAL_GPIO_ReadPin(GPIOA, Right_Led_Pin));
+    last_tick = HAL_GetTick();
+  }
+}
+
+void Run_Servo_Barrier(int8_t direction) {
+  // 1 -> 1,5ms <=> 0 -> 90 degrees
+  static uint32_t last_tick = 0;
+  uint16_t current_angle = __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1) - ANGLE_PWM_COMPARE_MIN;
+  
+  if ((direction == GO_DOWN) && (current_angle >= (BARRIER_STOP_ANGLE / 2))) {
+    barrier_state = DOWN;
+    return;
+  } 
+  
+  if ((direction == GO_UP) && (current_angle <= BARRIER_START_ANGLE)) {
+    barrier_state = UP;
+    return;
+  }
+  
+  if (HAL_GetTick() - last_tick >= BARRIER_ANGLE_STEP_INTERVAL_MS) {
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, direction + __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1));
+    last_tick = HAL_GetTick();
+  }
+}
 
 /* USER CODE END PFP */
 
@@ -94,11 +135,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM1_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  // 1 -> 1,5ms <=> 0 -> 90 degrees
-  //__HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, 3);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -109,17 +148,16 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-  // update pwm duty at runtime
-  for (uint16_t i = 1; i < 40; i++) {
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, i);
-    HAL_Delay(30);
-  }
-
-  for (uint16_t i = 39; i > 1; i--) {
-    __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_2, i);
-    HAL_Delay(20);
-  }
-
+    Run_Lights();
+    if (barrier_state == UP) {
+      Run_Servo_Barrier(GO_DOWN);
+    }
+    
+    //HAL_Delay(1000);
+    
+    if (barrier_state == DOWN) {
+      Run_Servo_Barrier(GO_UP);
+    }
   }
   /* USER CODE END 3 */
 
@@ -135,7 +173,7 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct;
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
-    /**Initializes the CPU, AHB and APB busses clocks
+    /**Initializes the CPU, AHB and APB busses clocks 
     */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
@@ -149,7 +187,7 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Initializes the CPU, AHB and APB busses clocks
+    /**Initializes the CPU, AHB and APB busses clocks 
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -163,11 +201,11 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure the Systick interrupt time
+    /**Configure the Systick interrupt time 
     */
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
-    /**Configure the Systick
+    /**Configure the Systick 
     */
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
@@ -204,7 +242,7 @@ void _Error_Handler(char *file, int line)
   * @retval None
   */
 void assert_failed(uint8_t* file, uint32_t line)
-{
+{ 
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
