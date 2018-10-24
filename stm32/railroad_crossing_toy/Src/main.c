@@ -78,7 +78,9 @@
 #define STOPPED 1
 uint8_t barrier_pwm_state = STOPPED;
 uint8_t barrier_state = UP;
-uint8_t barrier_direction = GO_UP;
+int8_t barrier_direction = GO_UP;
+
+#define IR_KEY_CMD  1
 
 #define LIGHTS_TOGGLE_INTERVAL_MS 1000UL
 /* USER CODE END PV */
@@ -104,6 +106,15 @@ void Check_IR_Keypress_Task(void) {
     sprintf(ir_message, "IR Command: %d Address: %d\r\n", irmp_data.command, irmp_data.address);
     DEBUG_APP(ir_message);
   #endif
+    if (irmp_data.command == IR_KEY_CMD) {
+      if (barrier_state == UP) {
+        barrier_direction = GO_DOWN;
+      }
+      
+      if (barrier_state == DOWN) {
+        barrier_direction = GO_UP;
+      }
+    }
       // ir signal decoded, do something here...
       // irmp_data.protocol is the protocol, see irmp.h
       // irmp_data.address is the address/manufacturer code of ir sender
@@ -121,6 +132,10 @@ void Lights_Task(void) {
       HAL_GPIO_WritePin(GPIOA, Left_Led_Pin, !HAL_GPIO_ReadPin(GPIOA, Right_Led_Pin));
       last_tick = HAL_GetTick();
     }
+  }
+  
+  if (barrier_state == UP) {
+    HAL_GPIO_WritePin(GPIOA, Left_Led_Pin|Right_Led_Pin, GPIO_PIN_RESET);
   }
 }
 

@@ -1,8 +1,0 @@
-{
-  "execPath": "/home/mtiutiu/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-g++",
-  "gccDefaultCFlags": "-fsyntax-only -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m3 -nostdlib -DPLATFORMIO=30601 -DSTM32F1 -DSTM32F103xB -DAPP_DEBUG -DIRMP_Receive_Pin=IR_INPUT_Pin -DIRMP_Receive_GPIO_Port=IR_INPUT_GPIO_Port -DUSE_HAL_DRIVER -DF_CPU=72000000L",
-  "gccDefaultCppFlags": "-fsyntax-only -fno-rtti -fno-exceptions -Os -ffunction-sections -fdata-sections -Wall -mthumb -mcpu=cortex-m3 -nostdlib -DPLATFORMIO=30601 -DSTM32F1 -DSTM32F103xB -DAPP_DEBUG -DIRMP_Receive_Pin=IR_INPUT_Pin -DIRMP_Receive_GPIO_Port=IR_INPUT_GPIO_Port -DUSE_HAL_DRIVER -DF_CPU=72000000L",
-  "gccErrorLimit": 15,
-  "gccIncludePaths": "/home/mtiutiu/Work/ARM_Playground/stm32/railroad_crossing_toy/Inc,/home/mtiutiu/Work/ARM_Playground/stm32/railroad_crossing_toy/Src,/home/mtiutiu/.platformio/packages/framework-stm32cube/f1/Drivers/CMSIS/Include,/home/mtiutiu/.platformio/packages/framework-stm32cube/f1/Drivers/CMSIS/Device/ST/STM32F1xx/Include,/home/mtiutiu/.platformio/packages/framework-stm32cube/f1/Drivers/STM32F1xx_HAL_Driver/Inc,/home/mtiutiu/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include,/home/mtiutiu/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include/c++/7.2.1,/home/mtiutiu/.platformio/packages/toolchain-gccarmnoneeabi/arm-none-eabi/include/c++/7.2.1/arm-none-eabi,/home/mtiutiu/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/7.2.1/include-fixed,/home/mtiutiu/.platformio/packages/toolchain-gccarmnoneeabi/lib/gcc/arm-none-eabi/7.2.1/include,/home/mtiutiu/.platformio/packages/tool-unity",
-  "gccSuppressWarnings": false
-}
