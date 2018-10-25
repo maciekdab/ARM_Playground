@@ -54,7 +54,7 @@
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
-//#include "bell.h"
+#include "bell.h"
 #include "irmp.h"
 /* USER CODE END Includes */
 
@@ -91,9 +91,27 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    if (htim->Instance == htim2.Instance) {
+  static uint32_t ir_scan_freq_divider = 0;
+  static uint32_t sound_sample_index = 0;
+  
+  if (htim->Instance == htim2.Instance) {
+    if(++ir_scan_freq_divider >= 10) {
       irmp_ISR();
+      ir_scan_freq_divider = 0;
     }
+    
+    if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
+      if (sound_sample_index >= SND_DATA_SAMPLES) {
+        sound_sample_index = 0;
+      }
+      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, bell_sound_data[sound_sample_index]);  
+    }
+    
+    if (barrier_state == UP) {
+      sound_sample_index = 0;
+      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0); 
+    }
+  }
 }
 
 void Check_IR_Keypress_Task(void) {
@@ -115,11 +133,11 @@ void Check_IR_Keypress_Task(void) {
         barrier_direction = GO_UP;
       }
     }
-      // ir signal decoded, do something here...
-      // irmp_data.protocol is the protocol, see irmp.h
-      // irmp_data.address is the address/manufacturer code of ir sender
-      // irmp_data.command is the command code
-      // irmp_protocol_names[irmp_data.protocol] is the protocol name (if enabled, see irmpconfig.h)
+    // ir signal decoded, do something here...
+    // irmp_data.protocol is the protocol, see irmp.h
+    // irmp_data.address is the address/manufacturer code of ir sender
+    // irmp_data.command is the command code
+    // irmp_protocol_names[irmp_data.protocol] is the protocol name (if enabled, see irmpconfig.h)
   }
 }
 
@@ -211,6 +229,7 @@ int main(void)
   //HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   barrier_pwm_state = STOPPED;
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   irmp_init(); // initialize irmp
 #ifdef APP_DEBUG
   DEBUG_APP("Started ...\r\n");

@@ -63,6 +63,8 @@
 #define Right_Led_GPIO_Port GPIOA
 #define Left_Led_Pin GPIO_PIN_1
 #define Left_Led_GPIO_Port GPIOA
+#define Speaker_Pin GPIO_PIN_2
+#define Speaker_GPIO_Port GPIOA
 #define IR_INPUT_Pin GPIO_PIN_5
 #define IR_INPUT_GPIO_Port GPIOA
 #define Servo_PWM_Out_Pin GPIO_PIN_6
