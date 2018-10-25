@@ -91,10 +91,12 @@ void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+  // this callback runs with a frequency of 160KHz for PWM Audio output
   static uint32_t ir_scan_freq_divider = 0;
   static uint32_t sound_sample_index = 0;
   
   if (htim->Instance == htim2.Instance) {
+    // IR sampling frequency must be 16KHz 
     if(++ir_scan_freq_divider >= 10) {
       irmp_ISR();
       ir_scan_freq_divider = 0;
