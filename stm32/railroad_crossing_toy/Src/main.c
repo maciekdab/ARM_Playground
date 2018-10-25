@@ -66,6 +66,10 @@
 #define DEBUG_APP(debug_line) do {char* message = debug_line; CDC_Transmit_FS(message, strlen(message));} while(0)
 #endif
 
+#define FALSE     0
+#define TRUE      1
+#define OFF       0
+#define ON        1
 #define UP        0
 #define DOWN      1
 #define GO_UP     -1
@@ -76,13 +80,12 @@
 #define BARRIER_ANGLE_STEP_INTERVAL_MS         20UL
 #define RUNNING 0
 #define STOPPED 1
+#define IR_KEY_CMD  1
+#define LIGHTS_TOGGLE_INTERVAL_MS 1000UL
 uint8_t barrier_pwm_state = STOPPED;
 uint8_t barrier_state = UP;
 int8_t barrier_direction = GO_UP;
-
-#define IR_KEY_CMD  1
-
-#define LIGHTS_TOGGLE_INTERVAL_MS 1000UL
+uint8_t audio_tick = FALSE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,31 +95,38 @@ void SystemClock_Config(void);
 /* Private function prototypes -----------------------------------------------*/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   // this callback runs with a frequency of 160KHz for PWM Audio output
-  static uint32_t ir_scan_freq_divider = 0;
-  static uint32_t sound_sample_index = 0;
+  static uint32_t freq_divider = 0;
   
   if (htim->Instance == htim2.Instance) {
-    // IR sampling frequency must be 16KHz 
-    if(++ir_scan_freq_divider >= 10) {
+    // IR & Audio sampling frequency must be ~16KHz 
+    if(++freq_divider >= 10) {
       irmp_ISR();
-      ir_scan_freq_divider = 0;
+      audio_tick = TRUE;
+      freq_divider = 0;
     }
-    
+  }
+}
+
+void Audio_Task(void) {
+  static uint32_t sound_sample_index = 0;
+  
+  if (audio_tick) {
     if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
-      if (sound_sample_index >= SND_DATA_SAMPLES) {
+      if (++sound_sample_index >= SND_DATA_SAMPLES) {
         sound_sample_index = 0;
       }
-      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, bell_sound_data[sound_sample_index]);  
+      __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, bell_sound_data[sound_sample_index]);
     }
     
     if (barrier_state == UP) {
       sound_sample_index = 0;
       __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_3, 0); 
     }
+    audio_tick = FALSE;
   }
 }
 
-void Check_IR_Keypress_Task(void) {
+void IR_Task(void) {
   IRMP_DATA irmp_data;
   
   if (irmp_get_data (&irmp_data)) {
@@ -135,11 +145,6 @@ void Check_IR_Keypress_Task(void) {
         barrier_direction = GO_UP;
       }
     }
-    // ir signal decoded, do something here...
-    // irmp_data.protocol is the protocol, see irmp.h
-    // irmp_data.address is the address/manufacturer code of ir sender
-    // irmp_data.command is the command code
-    // irmp_protocol_names[irmp_data.protocol] is the protocol name (if enabled, see irmpconfig.h)
   }
 }
 
@@ -246,8 +251,9 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    Check_IR_Keypress_Task();
+    IR_Task();
     Lights_Task();
+    Audio_Task();
     Servo_Barrier_Task();
   }
   /* USER CODE END 3 */
