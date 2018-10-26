@@ -50,7 +50,9 @@
 #include "main.h"
 #include "stm32f1xx_hal.h"
 #include "tim.h"
+#ifdef DEBUG_APP
 #include "usb_device.h"
+#endif
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -63,7 +65,11 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 #ifdef APP_DEBUG
-#define DEBUG_APP(debug_line) do {char* message = debug_line; CDC_Transmit_FS(message, strlen(message));} while(0)
+#define DEBUG_APP(debug_line) \
+  do { \
+    char* message = debug_line; \
+    CDC_Transmit_FS(message, strlen(message)); \
+  } while(0)
 #endif
 
 #define FALSE     0
@@ -82,10 +88,10 @@
 #define STOPPED 1
 #define IR_KEY_CMD  1
 #define LIGHTS_TOGGLE_INTERVAL_MS 1000UL
-uint8_t barrier_pwm_state = STOPPED;
-uint8_t barrier_state = UP;
-int8_t barrier_direction = GO_UP;
-uint8_t audio_tick = FALSE;
+static uint8_t barrier_pwm_state = STOPPED;
+static uint8_t barrier_state = UP;
+static int8_t barrier_direction = GO_UP;
+static uint8_t audio_tick = FALSE;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -107,7 +113,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   }
 }
 
-void Audio_Task(void) {
+static void Audio_Task(void) {
   static uint32_t sound_sample_index = 0;
   
   if (audio_tick) {
@@ -126,7 +132,7 @@ void Audio_Task(void) {
   }
 }
 
-void IR_Task(void) {
+static void IR_Task(void) {
   IRMP_DATA irmp_data;
   
   if (irmp_get_data (&irmp_data)) {
@@ -148,7 +154,7 @@ void IR_Task(void) {
   }
 }
 
-void Lights_Task(void) {
+static void Lights_Task(void) {
   static uint32_t last_tick = 0;
   
   if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
@@ -164,7 +170,7 @@ void Lights_Task(void) {
   }
 }
 
-void Servo_Barrier_Task(void) {
+static void Servo_Barrier_Task(void) {
   // 1 -> 1,5ms <=> 0 -> 90 degrees
   static uint32_t last_tick = 0;
   uint16_t current_angle = __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1) - ANGLE_PWM_COMPARE_MIN;
@@ -230,7 +236,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_TIM3_Init();
+#ifdef APP_DEBUG  
   MX_USB_DEVICE_Init();
+#endif  
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   //HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
