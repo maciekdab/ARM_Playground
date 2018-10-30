@@ -40,7 +40,9 @@
 #include "main.h"
 #include "stm32f3xx_hal.h"
 #include "tim.h"
+#ifdef APP_DEBUG
 #include "usart.h"
+#endif
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -56,7 +58,7 @@
 #define DEBUG_APP(debug_line) \
   do { \
     char* message = debug_line; \
-    HAL_UART_Transmit(&huart2, message, strlen(message), HAL_MAX_DELAY); \
+    HAL_UART_Transmit(&huart2, (uint8_t*)message, strlen(message), HAL_MAX_DELAY); \
   } while(0)
 #endif
 
@@ -147,14 +149,15 @@ static void Lights_Task(void) {
   
   if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
     if ((HAL_GetTick() - last_tick) >= LIGHTS_TOGGLE_INTERVAL_MS) {
-      HAL_GPIO_TogglePin(GPIOA, Right_Led_Pin);
-      HAL_GPIO_WritePin(GPIOA, Left_Led_Pin, !HAL_GPIO_ReadPin(GPIOA, Right_Led_Pin));
+      HAL_GPIO_TogglePin(Right_Led_GPIO_Port, Right_Led_Pin);
+      HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, !HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin));
       last_tick = HAL_GetTick();
     }
   }
   
   if (barrier_state == UP) {
-    HAL_GPIO_WritePin(GPIOA, Left_Led_Pin|Right_Led_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET);
   }
 }
 
@@ -186,6 +189,38 @@ static void Servo_Barrier_Task(void) {
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, barrier_direction + __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1));
     last_tick = HAL_GetTick();
   }
+}
+
+static void Sleep_Task(void) {
+	static uint32_t last_sleep_timestamp;
+
+	if(barrier_state != UP) {
+		// reset timestamp when not in resting state
+		last_sleep_timestamp = HAL_GetTick();
+		return;
+	}
+
+	if((barrier_state == UP) && (HAL_GetTick() - last_sleep_timestamp) >= 5000) {
+		// HAL enter sleep
+		HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET);
+		HAL_TIM_Base_Stop_IT(&htim2);
+		HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
+		HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
+		HAL_SuspendTick();
+	#ifdef APP_DEBUG
+		DEBUG_APP("Entering sleep ...\r\n");
+	#endif
+		HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+		SystemClock_Config();
+		HAL_ResumeTick();
+		HAL_TIM_Base_Start_IT(&htim2);
+		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+		last_sleep_timestamp = HAL_GetTick();
+	#ifdef APP_DEBUG
+		DEBUG_APP("Waking up from sleep ...\r\n");
+	#endif
+	}
 }
 
 /* USER CODE END PFP */
@@ -223,7 +258,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+#ifdef APP_DEBUG
   MX_USART2_UART_Init();
+#endif
   MX_TIM2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
@@ -245,12 +282,11 @@ int main(void)
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
-    // IR_Task();
-    // Lights_Task();
-    // Audio_Task();
-    // Servo_Barrier_Task();
-    DEBUG_APP("testing ...\r\n");
-    HAL_Delay(1000);
+    IR_Task();
+    Lights_Task();
+    Audio_Task();
+    Servo_Barrier_Task();
+    Sleep_Task();
   }
   /* USER CODE END 3 */
 
