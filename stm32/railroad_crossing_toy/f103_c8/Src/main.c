@@ -49,7 +49,9 @@
 #include "main.h"
 #include "stm32f1xx_hal.h"
 #include "tim.h"
+#ifdef APP_DEBUG
 #include "usb_device.h"
+#endif
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -137,7 +139,8 @@ static void IR_Task(void) {
 #ifdef APP_DEBUG
 		char ir_message[128];
 		//DEBUG_APP("GOT IR SIGNAL\r\n");
-		sprintf(ir_message, "IR Command: %d Address: %d\r\n", irmp_data.command, irmp_data.address);
+		sprintf(ir_message, "IR Command: %d Address: %d\r\n", irmp_data.command,
+				irmp_data.address);
 		DEBUG_APP(ir_message);
 #endif
 		if (irmp_data.command == IR_KEY_CMD) {
@@ -158,8 +161,7 @@ static void Lights_Task(void) {
 	if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
 		if ((HAL_GetTick() - last_tick) >= LIGHTS_TOGGLE_INTERVAL_MS) {
 			HAL_GPIO_TogglePin(Right_Led_GPIO_Port, Right_Led_Pin);
-			HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin,
-					!HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin));
+			HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, !HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin));
 			last_tick = HAL_GetTick();
 		}
 	}
@@ -204,7 +206,15 @@ static void Servo_Barrier_Task(void) {
 }
 
 static void Sleep_Task(void) {
-	if (barrier_state == UP) {
+	static uint32_t last_sleep_timestamp;
+
+	if (barrier_state != UP) {
+		// reset timestamp when not in resting state
+		last_sleep_timestamp = HAL_GetTick();
+		return;
+	}
+
+	if ((barrier_state == UP) && (HAL_GetTick() - last_sleep_timestamp) >= 5000) {
 		// HAL enter sleep
 		HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET);
@@ -219,6 +229,7 @@ static void Sleep_Task(void) {
 		HAL_ResumeTick();
 		HAL_TIM_Base_Start_IT(&htim2);
 		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+		last_sleep_timestamp = HAL_GetTick();
 #ifdef APP_DEBUG
 		DEBUG_APP("Waking up from sleep ...\r\n");
 #endif

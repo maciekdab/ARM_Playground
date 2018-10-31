@@ -151,8 +151,7 @@ static void Lights_Task(void) {
 	if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
 		if ((HAL_GetTick() - last_tick) >= LIGHTS_TOGGLE_INTERVAL_MS) {
 			HAL_GPIO_TogglePin(Right_Led_GPIO_Port, Right_Led_Pin);
-			HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin,
-					!HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin));
+			HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, !HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin));
 			last_tick = HAL_GetTick();
 		}
 	}
@@ -191,14 +190,21 @@ static void Servo_Barrier_Task(void) {
 	}
 
 	if (HAL_GetTick() - last_tick >= BARRIER_ANGLE_STEP_INTERVAL_MS) {
-		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1,
-				barrier_direction + __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1));
+		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, barrier_direction + __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1));
 		last_tick = HAL_GetTick();
 	}
 }
 
 static void Sleep_Task(void) {
-	if (barrier_state == UP) {
+	static uint32_t last_sleep_timestamp;
+
+	if (barrier_state != UP) {
+		// reset timestamp when not in resting state
+		last_sleep_timestamp = HAL_GetTick();
+		return;
+	}
+
+	if ((barrier_state == UP) && (HAL_GetTick() - last_sleep_timestamp) >= 5000) {
 		// HAL enter sleep
 		HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET);
@@ -213,6 +219,7 @@ static void Sleep_Task(void) {
 		HAL_ResumeTick();
 		HAL_TIM_Base_Start_IT(&htim2);
 		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+		last_sleep_timestamp = HAL_GetTick();
 #ifdef APP_DEBUG
 		DEBUG_APP("Waking up from sleep ...\r\n");
 #endif
