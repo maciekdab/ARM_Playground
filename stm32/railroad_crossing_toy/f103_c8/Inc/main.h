@@ -67,6 +67,7 @@
 #define Speaker_GPIO_Port GPIOA
 #define IR_INPUT_Pin GPIO_PIN_5
 #define IR_INPUT_GPIO_Port GPIOA
+#define IR_INPUT_EXTI_IRQn EXTI9_5_IRQn
 #define Servo_PWM_Out_Pin GPIO_PIN_6
 #define Servo_PWM_Out_GPIO_Port GPIOA
 
