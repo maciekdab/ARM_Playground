@@ -53,6 +53,8 @@
 #define MCO_GPIO_Port GPIOF
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
+#define Servo_Power_Pin GPIO_PIN_5
+#define Servo_Power_GPIO_Port GPIOA
 #define Servo_PWM_Out_Pin GPIO_PIN_6
 #define Servo_PWM_Out_GPIO_Port GPIOA
 #define IR_INPUT_Pin GPIO_PIN_7
