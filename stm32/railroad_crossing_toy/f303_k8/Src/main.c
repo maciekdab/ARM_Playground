@@ -60,22 +60,36 @@
   } while(0)
 #endif
 
-#define FALSE     0
-#define TRUE      1
-#define OFF       0
-#define ON        1
-#define UP        0
-#define DOWN      1
-#define GO_UP     -1
-#define GO_DOWN    1
+#define FALSE     	0
+#define TRUE      	1
+#define OFF       	0
+#define ON        	1
+#define UP        	0
+#define DOWN      	1
+#define GO_UP     	-1
+#define GO_DOWN    	1
 #define ANGLE_PWM_COMPARE_MIN                   90
 #define BARRIER_START_ANGLE                      0
 #define BARRIER_STOP_ANGLE                      80
 #define BARRIER_ANGLE_STEP_INTERVAL_MS         20UL
-#define RUNNING 0
-#define STOPPED 1
+#define RUNNING 	0
+#define STOPPED 	1
 #define IR_KEY_CMD  1
-#define LIGHTS_TOGGLE_INTERVAL_MS 1000UL
+#define LIGHTS_TOGGLE_INTERVAL_MS 	 	800UL
+#define IDLE_SLEEP_TIMEOUT_MS			5000UL
+#define SERVO_POWER_UP()				HAL_GPIO_WritePin(Servo_Power_GPIO_Port, Servo_Power_Pin, GPIO_PIN_SET)
+#define SERVO_POWER_DOWN()				HAL_GPIO_WritePin(Servo_Power_GPIO_Port, Servo_Power_Pin, GPIO_PIN_RESET)
+#define LEFT_LIGHT_OFF()				HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET)
+#define RIGHT_LIGHT_OFF()				HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET)
+#define TOGGLE_LEFT_LIGHT()				HAL_GPIO_TogglePin(Left_Led_GPIO_Port, Left_Led_Pin)
+#define TOGGLE_RIGHT_LIGHT()			HAL_GPIO_TogglePin(Right_Led_GPIO_Port, Right_Led_Pin)
+#define GET_LEFT_LIGHT_STATE()			HAL_GPIO_ReadPin(Left_Led_GPIO_Port, Left_Led_Pin)
+#define GET_RIGHT_LIGHT_STATE()			HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin)
+#define SET_LEFT_LIGHT_STATE(state)		HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, state)
+#define SET_RIGHT_LIGHT_STATE(state)	HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, state)
+#define LIGHTS_OFF()	\
+	LEFT_LIGHT_OFF();	\
+	RIGHT_LIGHT_OFF()
 static uint8_t barrier_pwm_state = STOPPED;
 static uint8_t barrier_state = UP;
 static int8_t barrier_direction = GO_UP;
@@ -149,15 +163,14 @@ static void Lights_Task(void) {
 
 	if (barrier_direction == GO_DOWN || barrier_state == DOWN) {
 		if ((HAL_GetTick() - last_tick) >= LIGHTS_TOGGLE_INTERVAL_MS) {
-			HAL_GPIO_TogglePin(Right_Led_GPIO_Port, Right_Led_Pin);
-			HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, !HAL_GPIO_ReadPin(Right_Led_GPIO_Port, Right_Led_Pin));
+			TOGGLE_RIGHT_LIGHT();
+			SET_LEFT_LIGHT_STATE(!GET_RIGHT_LIGHT_STATE());
 			last_tick = HAL_GetTick();
 		}
 	}
 
 	if (barrier_state == UP) {
-		HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET);
+		LIGHTS_OFF();
 	}
 }
 
@@ -171,7 +184,6 @@ static void Servo_Barrier_Task(void) {
 			&& (current_angle >= BARRIER_STOP_ANGLE)) {
 		barrier_state = DOWN;
 		HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
-		HAL_GPIO_WritePin(Servo_Power_GPIO_Port, Servo_Power_Pin, GPIO_PIN_RESET);
 		barrier_pwm_state = STOPPED;
 		return;
 	}
@@ -180,13 +192,11 @@ static void Servo_Barrier_Task(void) {
 			&& (current_angle <= BARRIER_START_ANGLE)) {
 		barrier_state = UP;
 		HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
-		HAL_GPIO_WritePin(Servo_Power_GPIO_Port, Servo_Power_Pin, GPIO_PIN_RESET);
 		barrier_pwm_state = STOPPED;
 		return;
 	}
 
 	if (barrier_pwm_state == STOPPED) {
-		HAL_GPIO_WritePin(Servo_Power_GPIO_Port, Servo_Power_Pin, GPIO_PIN_SET);
 		HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
 		barrier_pwm_state = RUNNING;
 	}
@@ -206,11 +216,10 @@ static void Sleep_Task(void) {
 		return;
 	}
 
-	if ((barrier_state == UP) && (HAL_GetTick() - last_sleep_timestamp) >= 5000) {
+	if ((barrier_state == UP) && (HAL_GetTick() - last_sleep_timestamp) >= IDLE_SLEEP_TIMEOUT_MS) {
 		// HAL enter sleep
-		HAL_GPIO_WritePin(Left_Led_GPIO_Port, Left_Led_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(Right_Led_GPIO_Port, Right_Led_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(Servo_Power_GPIO_Port, Servo_Power_Pin, GPIO_PIN_RESET);
+		LIGHTS_OFF();
+		SERVO_POWER_DOWN();
 		HAL_TIM_Base_Stop_IT(&htim2);
 		HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
 		HAL_SuspendTick();
@@ -220,6 +229,7 @@ static void Sleep_Task(void) {
 		HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 		SystemClock_Config();
 		HAL_ResumeTick();
+		SERVO_POWER_UP();
 		HAL_TIM_Base_Start_IT(&htim2);
 		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
 		last_sleep_timestamp = HAL_GetTick();
