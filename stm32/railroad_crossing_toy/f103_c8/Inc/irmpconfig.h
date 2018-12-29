@@ -49,7 +49,7 @@
 
 // typical protocols, disable here!             Enable  Remarks                 F_INTERRUPTS            Program Space
 #define IRMP_SUPPORT_SIRCS_PROTOCOL             0       // Sony SIRCS           >= 10000                 ~150 bytes
-#define IRMP_SUPPORT_NEC_PROTOCOL               0       // NEC + APPLE          >= 10000                 ~300 bytes
+#define IRMP_SUPPORT_NEC_PROTOCOL               1       // NEC + APPLE          >= 10000                 ~300 bytes
 #define IRMP_SUPPORT_SAMSUNG_PROTOCOL           0       // Samsung + Samsg32    >= 10000                 ~300 bytes
 #define IRMP_SUPPORT_KASEIKYO_PROTOCOL          0       // Kaseikyo             >= 10000                 ~250 bytes
 
@@ -76,7 +76,7 @@
 #define IRMP_SUPPORT_RECS80_PROTOCOL            0       // RECS80 (SAA3004)     >= 15000                  ~50 bytes
 #define IRMP_SUPPORT_RECS80EXT_PROTOCOL         0       // RECS80EXT (SAA3008)  >= 15000                  ~50 bytes
 #define IRMP_SUPPORT_THOMSON_PROTOCOL           0       // Thomson              >= 10000                 ~250 bytes
-#define IRMP_SUPPORT_NIKON_PROTOCOL             1       // NIKON camera         >= 10000                 ~250 bytes
+#define IRMP_SUPPORT_NIKON_PROTOCOL             0       // NIKON camera         >= 10000                 ~250 bytes
 #define IRMP_SUPPORT_NETBOX_PROTOCOL            0       // Netbox keyboard      >= 10000                 ~400 bytes (PROTOTYPE!)
 #define IRMP_SUPPORT_ORTEK_PROTOCOL             0       // ORTEK (Hama)         >= 10000                 ~150 bytes
 #define IRMP_SUPPORT_TELEFUNKEN_PROTOCOL        0       // Telefunken 1560      >= 10000                 ~150 bytes

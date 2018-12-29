@@ -67,11 +67,11 @@
 #define GO_DOWN    	1
 #define ANGLE_PWM_COMPARE_MIN                   90
 #define BARRIER_START_ANGLE                      0
-#define BARRIER_STOP_ANGLE                      80
+#define BARRIER_STOP_ANGLE                      74
 #define BARRIER_ANGLE_STEP_INTERVAL_MS         20UL
 #define RUNNING 	0
 #define STOPPED 	1
-#define IR_KEY_CMD  1
+#define IR_KEY_ADDRESS  48896
 #define LIGHTS_TOGGLE_INTERVAL_MS 	 	800UL
 #define IDLE_SLEEP_TIMEOUT_MS			5000UL
 /* USER CODE END PD */
@@ -165,7 +165,7 @@ static void IR_Task(void) {
 				irmp_data.address);
 		DEBUG_APP(ir_message);
 #endif
-		if (irmp_data.command == IR_KEY_CMD) {
+		if (irmp_data.address == IR_KEY_ADDRESS) {
 			if (barrier_state == UP) {
 				barrier_direction = GO_DOWN;
 			}
@@ -196,19 +196,16 @@ static void Lights_Task(void) {
 static void Servo_Barrier_Task(void) {
 	// 1 -> 1,5ms <=> 0 -> 90 degrees
 	static uint32_t last_tick = 0;
-	uint16_t current_angle = __HAL_TIM_GET_COMPARE(&htim3,
-			TIM_CHANNEL_1) - ANGLE_PWM_COMPARE_MIN;
+	uint16_t current_angle = __HAL_TIM_GET_COMPARE(&htim3, TIM_CHANNEL_1) - ANGLE_PWM_COMPARE_MIN;
 
-	if ((barrier_direction == GO_DOWN)
-			&& (current_angle >= BARRIER_STOP_ANGLE)) {
+	if ((barrier_direction == GO_DOWN) && (current_angle >= BARRIER_STOP_ANGLE)) {
 		barrier_state = DOWN;
 		HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
 		barrier_pwm_state = STOPPED;
 		return;
 	}
 
-	if ((barrier_direction == GO_UP)
-			&& (current_angle <= BARRIER_START_ANGLE)) {
+	if ((barrier_direction == GO_UP) && (current_angle <= BARRIER_START_ANGLE)) {
 		barrier_state = UP;
 		HAL_TIM_PWM_Stop(&htim3, TIM_CHANNEL_1);
 		barrier_pwm_state = STOPPED;
@@ -238,7 +235,7 @@ static void Sleep_Task(void) {
 	if ((barrier_state == UP) && (HAL_GetTick() - last_sleep_timestamp) >= IDLE_SLEEP_TIMEOUT_MS) {
 		// HAL enter sleep
 		LIGHTS_OFF();
-		SERVO_POWER_DOWN();
+		//SERVO_POWER_DOWN();
 		HAL_TIM_Base_Stop_IT(&htim2);
 		HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3);
 		HAL_SuspendTick();
@@ -248,7 +245,7 @@ static void Sleep_Task(void) {
 		HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
 		SystemClock_Config();
 		HAL_ResumeTick();
-		SERVO_POWER_UP();
+		//SERVO_POWER_UP();
 		HAL_TIM_Base_Start_IT(&htim2);
 		HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
 		last_sleep_timestamp = HAL_GetTick();
@@ -381,7 +378,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(char *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
 	/* User can add his own implementation to report the file name and line number,
 	 tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
